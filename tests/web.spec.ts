@@ -75,8 +75,8 @@ for (const viewport of sizes) {
     await page.evaluate(() => {
       document.documentElement.style.fontSize = '200%';
     });
-    await assertNoPageOverflow(page);
     await captureFullPage(page, info, 'text-200');
+    await assertNoPageOverflow(page);
     await page.emulateMedia({ reducedMotion: 'reduce' });
     expect(
       await page
@@ -87,6 +87,23 @@ for (const viewport of sizes) {
     expect(errors).toEqual([]);
   });
 }
+test('static long heading at 320px and 200% text remains within the page', async ({
+  page,
+}, info) => {
+  await page.setViewportSize({ width: 320, height: 900 });
+  await page.goto(url('/static/'));
+  await page.evaluate(() => {
+    document.documentElement.style.fontSize = '200%';
+    const heading = document.querySelector('h1');
+    if (!heading) throw new Error('Fixture heading missing');
+    heading.textContent = 'SuperIntelligenceAgentStandards';
+  });
+  await captureFullPage(page, info, 'long-heading-200');
+  await assertNoPageOverflow(page);
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText(
+    'SuperIntelligenceAgentStandards',
+  );
+});
 for (const viewport of viewports) {
   test(`typed web ${String(viewport.width)}x${String(viewport.height)} compiled form flow`, async ({
     page,

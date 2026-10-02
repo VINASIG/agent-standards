@@ -12,5 +12,6 @@
 - Publish the source under `VINASIG/agent-standards`, add canonical repository metadata and document source-based adoption.
 - Add public contribution routes and private vulnerability reporting.
 - Preserve the initial local audit and record publication verification separately.
+- Fix heading reflow at 320 px and 200% text sizing across platform fonts; add a long-heading regression and capture enlarged-text evidence before assertions.
 
 This is a public source preview without a tagged release or npm package. [The publication audit](docs/audits/PUBLICATION.md) records executed checks and remaining blockers. Package licensing remains `UNLICENSED` pending an explicit owner decision.

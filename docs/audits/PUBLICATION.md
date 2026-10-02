@@ -29,4 +29,19 @@ The following checks ran again after public-preview documentation, metadata and 
 
 Local quality artifact: `output/quality/e9538446-6421-48a8-a94b-c8ca3f061455/`. Demo artifact: `output/demo/7087e143-92ed-4ec1-9ae8-1e2f22aab95a/`; manifest SHA-256: `ad5dcbe4601a9a3668d3433330a582e6d780b8f2527e1dcc8cfbb93f8f264870`. These paths remain ignored local evidence.
 
-Remote CI verification is pending the first source push. Workflow definitions alone are not passing evidence. The current local browser and Codex limitations are detailed in the initial audit. Publishing changes do not claim new visual review, production measurements, real-device checks or account-dependent agent execution.
+`npm audit --json` also reported zero known advisories. This is advisory evidence for the checked lockfile rather than a general security certification.
+
+## Remote CI and repair loop
+
+Initial public source commit: `a46f663d6efcbf2f8c157e4b16c871df8aa59691`.
+
+- [Source and installer run](https://github.com/VINASIG/agent-standards/actions/runs/37020610166): PASS on both Ubuntu and Windows, including fresh dependency installation, source checks, 13 tests, ten quality controls, build and all three consumer demos. Both evidence artifacts were uploaded.
+- [Initial web run](https://github.com/VINASIG/agent-standards/actions/runs/37020610196): Windows browser job PASS; Ubuntu completed 52 cases and failed two, in Firefox and WebKit at 320x900 with 200% text. The document measured 329 px against a 320 px viewport. Performance was intentionally outside this push event's job scope.
+
+The enlarged heading had no emergency word wrapping. Platform font metrics exposed the problem at narrow widths. The fixture now applies `overflow-wrap: anywhere` to `h1`, preserving text, size and normal desktop layout. A new long-heading regression reproduces the same constraint independently of a specific platform font. Enlarged-text screenshots now run before the overflow assertion so a future failure preserves that state.
+
+The new regression failed on both local Chromium and WebKit before repair, measuring a 1060 px document at a 320 px viewport. Before evidence: `output/responsive/5598af80-abb1-46b1-a9c3-b93a24226e0b/`. Both full-page failure screenshots were opened, and one frame from the initial Linux WebKit trace was inspected.
+
+After repair, all 38 local Chromium/WebKit tests passed without retries or skips in `output/responsive/963f7c37-66b1-4356-a984-31740ce88c83/`. Source checks and all ten quality controls passed again. Six after images were opened: long-heading and ordinary 200% text at 320 px, plus 1440 px default, in both local engines. This records actual agent visual review, not independent human approval.
+
+Remote revalidation of the repair is pending its source push. The local Firefox runtime blocker and deeper Codex-body execution blocker remain recorded in the initial audit. No production measurements, real-device checks or account-dependent agent execution are inferred from publication.
