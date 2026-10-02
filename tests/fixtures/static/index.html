@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="A local fixture for responsive and accessible browser tasks."
+    />
+    <link rel="canonical" href="https://example.invalid/fixture/" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Browser quality fixture</title>
+    <script type="module" src="./app.js"></script>
+  </head>
+  <body>
+    <header>
+      <a href="#main" tabindex="0">Skip to content</a>
+      <button type="button" aria-expanded="false" aria-controls="navigation">
+        Menu
+      </button>
+      <nav id="navigation" aria-label="Main" hidden>
+        <a href="#form">Contact form</a>
+      </nav>
+    </header>
+    <main id="main">
+      <h1>Browser quality fixture</h1>
+      <p>
+        A deliberately small local test page. It is not a VINASIG product design
+        example.
+      </p>
+      <section aria-labelledby="previews">
+        <h2 id="previews">Preview sizes</h2>
+        <div class="grid">
+          <article>
+            <h3>180 x 180</h3>
+            <p>Long content remains readable on a narrow screen.</p>
+          </article>
+          <article>
+            <h3>512 x 512</h3>
+            <p class="long">
+              abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz
+            </p>
+          </article>
+        </div>
+      </section>
+      <section id="form" aria-labelledby="contact">
+        <h2 id="contact">Contact</h2>
+        <form novalidate>
+          <label for="email">Email address</label
+          ><input
+            id="email"
+            name="email"
+            type="email"
+            autocomplete="email"
+            required
+          />
+          <button type="submit">Validate locally</button>
+          <p role="alert" id="error" hidden>Enter a valid email address.</p>
+          <p role="status" id="success" hidden>
+            Validation complete. No data was sent.
+          </p>
+        </form>
+      </section>
+      <button type="button" id="open-dialog">Open details</button>
+      <dialog aria-labelledby="dialog-title">
+        <h2 id="dialog-title">Details</h2>
+        <p>Long content wraps within the viewport.</p>
+        <button type="button" id="close-dialog">Close details</button>
+      </dialog>
+      <section class="below" aria-labelledby="more">
+        <h2 id="more">Below the first screen</h2>
+        <p>Scroll to verify this content and the footer.</p>
+      </section>
+    </main>
+    <footer><p>Local test fixture</p></footer>
+  </body>
+</html>

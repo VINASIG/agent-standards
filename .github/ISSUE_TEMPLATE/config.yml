@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Private security report
+    url: https://github.com/VINASIG/agent-standards/security/advisories/new
+    about: Report vulnerabilities privately without exposing sensitive information.
+  - name: Integration guide
+    url: https://github.com/VINASIG/agent-standards/blob/main/docs/integration.md
+    about: Review profiles, snapshot import, conflict handling and rollback.

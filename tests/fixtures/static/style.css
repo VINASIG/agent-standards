@@ -1,0 +1,114 @@
+:root {
+  font-family: sans-serif;
+  color: #292526;
+  background: #f7f6f4;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+header,
+main,
+footer {
+  width: min(100% - 2rem, 60rem);
+  margin-inline: auto;
+}
+
+header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  padding-block: 1rem;
+}
+
+nav {
+  flex-basis: 100%;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+p {
+  line-height: 1.6;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+article {
+  border: 1px solid #70696a;
+  padding: 1rem;
+}
+
+.long {
+  overflow-wrap: anywhere;
+}
+
+form {
+  display: grid;
+  gap: 1rem;
+  max-width: 32rem;
+  margin-bottom: 2rem;
+}
+
+input,
+button {
+  font: inherit;
+  min-height: 44px;
+  padding: 0.75rem;
+}
+
+input {
+  min-width: 0;
+  width: 100%;
+}
+
+button {
+  color: #fff;
+  background: #17375f;
+  border: 0;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 3px solid #21497b;
+  outline-offset: 3px;
+}
+
+dialog {
+  max-width: min(30rem, calc(100% - 2rem));
+}
+
+dialog::backdrop {
+  background: rgb(0 0 0 / 30%);
+}
+
+.below {
+  margin-top: 40rem;
+}
+
+footer {
+  padding-block: 2rem;
+}
+
+@media (width <= 520px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  button {
+    transition: background-color 160ms ease;
+  }
+}

@@ -1,0 +1,24 @@
+name: Bug report
+description: Report reproducible installer, policy routing or enforcement behavior
+body:
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment and pinned version
+      description: OS, runtime, agent version, profile and bundle digest. Do not include secrets.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduction and expected outcome
+      description: Provide a minimal fixture and exact command or browser state.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Actual result and evidence
+      description: Status/exit code, relevant logs and reviewed screenshots. Report security privately.
+    validations:
+      required: true

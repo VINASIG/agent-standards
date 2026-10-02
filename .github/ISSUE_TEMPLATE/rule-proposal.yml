@@ -1,0 +1,24 @@
+name: Rule or tool proposal
+description: Propose a scoped standard change with current evidence
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem and scope
+      description: Name affected rules/profiles and a concrete observed need.
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Sources and alternatives
+      description: Include official links, read date, versions and compatibility/permissions.
+    validations:
+      required: true
+  - type: textarea
+    id: verification
+    attributes:
+      label: Verification and migration
+      description: Include reproducible positive/negative checks, consumer impact and rollback.
+    validations:
+      required: true
