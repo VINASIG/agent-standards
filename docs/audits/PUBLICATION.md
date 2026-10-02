@@ -44,4 +44,19 @@ The new regression failed on both local Chromium and WebKit before repair, measu
 
 After repair, all 38 local Chromium/WebKit tests passed without retries or skips in `output/responsive/963f7c37-66b1-4356-a984-31740ce88c83/`. Source checks and all ten quality controls passed again. Six after images were opened: long-heading and ordinary 200% text at 320 px, plus 1440 px default, in both local engines. This records actual agent visual review, not independent human approval.
 
-Remote revalidation of the repair is pending its source push. The local Firefox runtime blocker and deeper Codex-body execution blocker remain recorded in the initial audit. No production measurements, real-device checks or account-dependent agent execution are inferred from publication.
+## Revalidation of the repair
+
+Repair source commit: `35fd91a286651a976022a7ae14554269ce83b557`.
+
+- [Source and installer revalidation](https://github.com/VINASIG/agent-standards/actions/runs/37022285868): PASS on Ubuntu and Windows.
+- [Browser revalidation](https://github.com/VINASIG/agent-standards/actions/runs/37022285926): PASS on both Ubuntu and Windows, with 57 expected cases per operating system and zero failures, skips or flaky results. Both browser evidence artifacts were uploaded. Performance remains outside this push event's job scope.
+
+The matrix uses Chromium, Firefox and WebKit. Static fixtures cover 360x800, 390x844, 768x1024, 1024x768, 1440x900 and 320/519/520/521/600/900/1280 px intermediate or breakpoint widths. Typed fixtures cover the five mandatory viewports. Existing menu, validation, dialog, focus, reduced-motion, accessibility and negative-control checks remain enabled. The added long-heading case raises the three-engine total from 54 to 57 per operating system.
+
+The completed Linux artifact was downloaded to `output/publication/ubuntu-browser-fixed/`; its report and images are under `9968730c-9696-49d2-86d2-7c2b908ed5d5/`. Seven Linux after images were opened: ordinary 200% text and the long-heading case at 320 px in all three engines, plus the 1440 px Firefox default. These selected images were reviewed separately from the automatic test result; all generated screenshots are not claimed as individually inspected.
+
+The completed Windows artifact was downloaded to `output/publication/windows-browser-fixed/`; its report and images are under `840feff2-961d-4107-b306-15634de189f8/`. Three Windows CI Firefox images were opened: ordinary 200% text and the long-heading case at 320 px, plus the 1440 px default. The publication follow-up inspected 16 after images in total, alongside the two local before screenshots and one historical Linux trace frame.
+
+Anonymous HTTPS access also confirmed public repository metadata and a successful HTTP 200 read of the canonical README. Private vulnerability reporting remained enabled. Generated evidence stays in ignored local output and GitHub CI artifacts rather than the source tree.
+
+The local Firefox runtime blocker and deeper Codex-body execution blocker remain recorded in the initial audit. Successful remote Firefox tests do not repair the local runtime. No production measurements, real-device checks or account-dependent agent execution are inferred from publication.
