@@ -1,5 +1,15 @@
 # Changelog
 
+## Interface rules clarification - 2026-10-03
+
+- Make visible punctuation, sentence case and custom list markers mandatory under LANG-004.
+- Add LANG-005 for ordinary-reader language, meaningful units and natural optional-field labels.
+- Add WEB-008 for styled open and closed dropdown, calendar, color and slider controls across supported engines.
+- Preserve required notation and user input through narrow semantic annotations rather than page-wide exceptions.
+- Add a reusable rendered-interface inspector and positive/negative browser regressions.
+- Surface the rules in the installed root entrypoint and implementation/responsive skills.
+- The owner requested adoption across VINASIG repositories. This clarification does not approve unrelated draft design proposals.
+
 ## 0.1.0 public preview - 2026-10-02
 
 - Add scoped core/web policies, stable rule metadata and seven namespaced skills.
