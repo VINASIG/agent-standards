@@ -9,6 +9,7 @@ This review covers the open Dependabot proposals and the current supported toolc
 - `typescript-eslint` 8.71.0 requires TypeScript `>=4.8.4 <6.1.0`. TypeScript 7 cannot be installed with the required typed lint without violating its peer contract.
 - `@types/node` remains pinned to 24.19.1, the latest verified release in major 24. The global latest is 26.6.4. Node 26 declarations can expose APIs absent from the supported Node 24 runtime, even when current source passes a check.
 - ESLint is selected at 10.12.0, the current stable release accepted by the typed lint peer range. This is a compatible minor update.
+- The source tool registry was refreshed from official metadata for all 23 recorded packages. Its selected verification runtime and ESLint now match this repository's checked pins. Optional tools remain subject to consumer compatibility review and are not implicitly installed. Existing consumer snapshots retain their reviewed digests.
 
 ## Pull requests
 
