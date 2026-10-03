@@ -44,3 +44,25 @@ test('copy inspector preserves required syntax and user-controlled output', asyn
   );
   expect(await page.evaluate(inspectInterface)).toEqual([]);
 });
+
+test('a hidden attribute cannot hide a control from inspection when CSS exposes it', async ({
+  page,
+}) => {
+  await page.setContent(
+    '<p hidden>HIDDEN COPY</p><p hidden style="display:block">VISIBLE COPY</p><select hidden style="display:block"><option>One</option></select>',
+  );
+  const findings = await page.evaluate(inspectInterface);
+  expect(findings).toContainEqual({
+    kind: 'all-caps-copy',
+    text: 'VISIBLE COPY',
+    element: 'p',
+  });
+  expect(findings).toContainEqual({
+    kind: 'platform-popup',
+    text: 'select',
+    element: 'select',
+  });
+  expect(findings.some((finding) => finding.text === 'HIDDEN COPY')).toBe(
+    false,
+  );
+});

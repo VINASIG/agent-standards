@@ -58,8 +58,7 @@ export function inspectInterface() {
     return (
       style.display !== 'none' &&
       style.visibility !== 'hidden' &&
-      element.getClientRects().length > 0 &&
-      !element.closest('[hidden]')
+      element.getClientRects().length > 0
     );
   }
   /** @param {Element} element @param {string} text @param {string} kind */
