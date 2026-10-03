@@ -10,7 +10,7 @@
   <body>
     <main>
       <h1>Typed web fixture</h1>
-      <form>
+      <form novalidate autocomplete="off">
         <label for="email">Email address</label
         ><input
           type="email"
@@ -18,7 +18,7 @@
           name="email"
           autocomplete="email"
           required
-        /><button type="submit">Validate locally</button>
+        /><button type="submit" disabled>Validate locally</button>
         <p role="status"></p>
       </form>
     </main>

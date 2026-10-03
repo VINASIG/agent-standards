@@ -118,6 +118,22 @@ for (const viewport of viewports) {
     await captureFullPage(page, info, 'typed-success');
   });
 }
+test('typed validation reports invalid input locally and requires its script', async ({
+  page,
+}) => {
+  await page.goto(url('/typed/'));
+  await page.getByLabel('Email address').fill('invalid');
+  await page.getByRole('button', { name: 'Validate locally' }).click();
+  await expect(page.getByRole('status')).toHaveText(
+    'Enter a valid email address.',
+  );
+  await page.route('**/typed/app.js', (route) => route.abort());
+  await page.reload();
+  await expect(
+    page.getByRole('button', { name: 'Validate locally' }),
+  ).toBeDisabled();
+});
+
 test('negative controls detect an accessible-name and page-width defect', async ({
   page,
 }, info) => {
