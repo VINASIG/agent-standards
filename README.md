@@ -19,7 +19,7 @@ Version 0.1.0 is a public preview maintained at [VINASIG/agent-standards](https:
 
 ## Quick start
 
-Use Node 24.19.0 and npm 11.17.0, or review a compatible version update first. Browser binaries are needed only for this repository's web verification, not for a core consumer.
+Use Node 24.21.0 and npm 11.19.0, or review a compatible version update first. Browser binaries are needed only for this repository's web verification, not for a core consumer.
 
 ```sh
 git clone https://github.com/VINASIG/agent-standards.git

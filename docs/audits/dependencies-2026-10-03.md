@@ -4,6 +4,7 @@ This review covers the open Dependabot proposals and the current supported toolc
 
 ## Selected versions
 
+- The verification runtime is pinned to Node 24.21.0, the current stable patch in the supported Node 24 line, with its npm 11.19.0 release. Consumer minimum runtime support remains unchanged.
 - TypeScript remains pinned to 6.0.3. The latest stable registry release is 7.0.2.
 - `typescript-eslint` 8.71.0 requires TypeScript `>=4.8.4 <6.1.0`. TypeScript 7 cannot be installed with the required typed lint without violating its peer contract.
 - `@types/node` remains pinned to 24.19.1, the latest verified release in major 24. The global latest is 26.6.4. Node 26 declarations can expose APIs absent from the supported Node 24 runtime, even when current source passes a check.
