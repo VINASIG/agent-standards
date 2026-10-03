@@ -32,7 +32,7 @@ export interface Check {
   status: 'PASS' | 'FAIL' | 'NOT_RUN';
   detail: string;
 }
-const basePolicies = ['core', 'language', 'quality'];
+const basePolicies = ['core', 'language', 'quality', 'licensing'];
 const webPolicies = [
   'web',
   'motion',
@@ -55,6 +55,7 @@ export function entrypoint(p: Profile, version: string): string {
     'Read `.vinasig/standards/policies/core.md` and `language.md` before repository work. Respect platform instructions, current user authorization and local project guidance. Preserve unrelated changes. Never invent verification or weaken a quality gate to pass.\n\n' +
     `Active profile is \`${p}\`. Read \`.vinasig/standards/profiles/${p}.md\` and the task-relevant policies. Core is valid for CLI and documentation projects and installs no browser dependencies.\n\n` +
     'Use `$vinasig-workflow` for implementation work and `$vinasig-dependencies` when adding or upgrading dependencies. Report PASS, FAIL, NOT_RUN or NOT_APPLICABLE with evidence and reasons. Commit, push and publish only within the task authorization.\n\n' +
+    'For license selection, imported material or distribution changes read `policies/licensing.md` and `LICENSES.md` inside the snapshot. LIC-001 through LIC-004 require purpose-based selection, authority and dependency review, separate documentation/font/data/brand rights, consistent SPDX metadata and delivery evidence. Importing this standard does not relicense the host project.\n\n' +
     (p === 'core'
       ? ''
       : 'For UI changes read `policies/web.md` inside the snapshot. Apply LANG-004/LANG-005 to all visible copy and locales. WEB-001 requires original transparent header logos matched to the actual surface, without a padded or rounded logo card. WEB-008 requires styled open dropdowns, calendars, color choosers and sliders, including safe initial HTML before scripts load. Use `$vinasig-responsive` for layout/accessibility, `$vinasig-motion` for movement, `$vinasig-search` for SEO/AEO/GEO, `$vinasig-performance` for speed, and `$vinasig-agent-readiness` for browser-agent tasks. Space Grotesk, Lucide and Simple Icons follow their separate roles. Open and inspect real screenshots.\n\n') +
@@ -78,6 +79,12 @@ function selected(file: string, p: Profile): boolean {
   if (file.startsWith('configs/')) return web;
   if (file.startsWith('templates/web/')) return web;
   return (
+    file === 'LICENSE' ||
+    file === 'LICENSES.md' ||
+    file === 'BRAND_POLICY.md' ||
+    file === 'docs/audits/licensing-2026-10-04.md' ||
+    file === 'docs/license-text-sources.json' ||
+    file.startsWith('LICENSES/') ||
     file === 'standards.json' ||
     file === 'tools.lock.json' ||
     file === 'docs/sources.md' ||

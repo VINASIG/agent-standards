@@ -36,6 +36,14 @@ export async function createBundle(
   ])
     paths.push(...(await filesUnder(root, folder)));
   paths.push('standards.json', 'tools.lock.json');
+  paths.push(
+    'LICENSE',
+    'LICENSES.md',
+    'LICENSES/CC-BY-SA-4.0.txt',
+    'BRAND_POLICY.md',
+    'docs/audits/licensing-2026-10-04.md',
+    'docs/license-text-sources.json',
+  );
   paths.push('docs/sources.md', 'docs/tool-registry.md');
   const files: Record<string, string> = {};
   for (const relative of paths.sort()) {

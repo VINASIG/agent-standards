@@ -72,6 +72,26 @@ for (const p of ['core', 'web-static', 'web-typescript'] satisfies Profile[]) {
     );
     const snapshot = await installed(target);
     assert.ok(snapshot);
+    for (const file of [
+      'LICENSE',
+      'LICENSES.md',
+      'LICENSES/CC-BY-SA-4.0.txt',
+      'BRAND_POLICY.md',
+      'docs/audits/licensing-2026-10-04.md',
+      'docs/license-text-sources.json',
+      'policies/licensing.md',
+      'templates/license-review.md',
+    ]) {
+      assert.deepEqual(
+        await readFile(path.join(target, '.vinasig/standards', file)),
+        await readFile(path.join(repositoryRoot, file)),
+        `Preserve license and review material for ${p}: ${file}`,
+      );
+    }
+    assert.match(
+      await readFile(path.join(target, 'AGENTS.md'), 'utf8'),
+      /Importing this standard does not relicense the host project/,
+    );
     if (p === 'core')
       assert.equal(
         Object.keys(snapshot.manifest.files).some((file) =>

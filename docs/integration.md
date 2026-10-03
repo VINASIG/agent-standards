@@ -32,6 +32,8 @@ Use `core` for a CLI, library, service or documentation repository. Use `web-typ
 
 The generated `AGENTS.md` block gives core instructions and paths to read for the selected task. Markdown links are routing instructions, not a Codex import syntax. Skills are copied to `.agents/skills/` using their VINASIG namespace. Start a fresh session to discover newly installed skills.
 
+Every profile also receives LICENSE, LICENSES.md, the CC BY-SA text, the licensing policy and review template. GPL covers executable snapshot code/configuration and CC BY-SA covers policy/skill prose. Preserve those grants and attribution when copying the snapshot. Importing it alone does not relicense the host project. Review actual integration of executable code under the applicable software terms.
+
 The root instruction budget is conservatively limited to 8 KiB. The current documented Codex default is 32 KiB for the combined instruction chain, including other guidance. Inspect ancestors, directory-specific guides and global configuration if the actual chain is too large. The installer does not increase a global limit. A root `AGENTS.override.md` causes a conflict because it shadows the generated `AGENTS.md`; resolve that routing explicitly before installing.
 
 ## Owned and unowned content

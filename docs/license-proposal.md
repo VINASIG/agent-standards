@@ -1,9 +1,9 @@
-# License status and proposal
+# Approved license decision
 
-The owner authorized public GitHub source publication on 2026-10-02. The repository continues to use `UNLICENSED` in its package metadata because no specific license grant or copyright attribution was selected. Public visibility is distinct from granting general redistribution rights. No existing license was replaced. The implementation and policy text were written using source synthesis rather than copying whole third-party guides.
+The owner selected a licensing direction for VINASIG on 4 October 2026. This supersedes the unapproved Apache-2.0 proposal and earlier UNLICENSED metadata at this path.
 
-Proposal: use Apache-2.0 for the new policy text, skills and implementation after the owner approves the grant and copyright details. Its explicit patent provisions are useful for organization tooling. MIT is a simpler alternative if that matches the owner's repository policy. This proposal is not a grant and no copyright holder or legal entity is invented here.
+The offline installer, CLI, executable helpers, configs and schemas use GPL-3.0-or-later. Policies, skill prose and other authored documentation use CC-BY-SA-4.0. Code examples intended for execution additionally use the software grant. Read [LICENSES.md](../LICENSES.md) for the grant and exclusions.
 
-Preserve third-party dependency licenses and notices. Font licensing, Simple Icons' per-mark rights and the VINASIG asset archive remain separate. The current brand-assets archive does not grant a blanket logo/artwork license; no such files are redistributed by this repository.
+Every snapshot profile includes the license texts and material map. An imported snapshot does not itself set a host project's license. Brand assets, fonts and dependencies retain their separate terms.
 
-Before an open-source license grant or packaged release, the owner should select the license, confirm the intended copyright attribution and approve any included third-party material. Then add the actual license text and update package metadata as an authorized change. This pending decision does not block the authorized public GitHub preview.
+[The licensing policy](../policies/licensing.md) gives the organization selection procedure. [The review](audits/licensing-2026-10-04.md) records this project's rationale, ownership observations, files and remaining review.

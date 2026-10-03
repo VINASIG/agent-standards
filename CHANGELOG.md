@@ -1,5 +1,15 @@
 # Changelog
 
+## Licensing policy and distribution - 2026-10-04
+
+- Implement the owner's organization-wide licensing direction. Default software selection is AGPL-3.0-or-later, with purpose-based GPL/LGPL choices, CC BY-SA knowledge, upstream OFL fonts and suitable database licensing.
+- Add LIC-001 through LIC-004 for ownership/dependency review, authorization, material scopes, metadata and verified delivery.
+- License this offline software under GPL-3.0-or-later and authored policies/skills under CC-BY-SA-4.0. Supersede the earlier unapproved Apache proposal.
+- Add a reusable review template and licensing route in every installed AGENTS entrypoint.
+- Include full license texts and the scope map in offline bundles and all profiles. Verify exact preservation without relicensing the host or changing its package configuration.
+- Record the separate VINASIG Brand Usage Policy and the organization review. Original font/artwork bytes and third-party rights are preserved.
+- Preserve publisher license text verbatim, including its final blank line. Limit the Git whitespace exception to legal text paths and verify exact SHA-256 instead. Source formatting and behavior gates remain intact.
+
 ## Transparent header clarification - 2026-10-04
 
 - Record the owner's approval for original transparent header lockups matched to the actual surface under WEB-001.
@@ -34,4 +44,4 @@
 - Preserve the initial local audit and record publication verification separately.
 - Fix heading reflow at 320 px and 200% text sizing across platform fonts; add a long-heading regression and capture enlarged-text evidence before assertions.
 
-This is a public source preview without a tagged release or npm package. [The publication audit](docs/audits/PUBLICATION.md) records executed checks and remaining blockers. Package licensing remains `UNLICENSED` pending an explicit owner decision.
+This is a public source preview without a tagged release or npm package. [The publication audit](docs/audits/PUBLICATION.md) records historical checks and remaining verification limits. [LICENSES.md](LICENSES.md) records the owner's later licensing decision.

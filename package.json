@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "description": "Portable VINASIG SI agent policies, skills and verified project integration",
-  "license": "UNLICENSED",
+  "license": "GPL-3.0-or-later",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/VINASIG/agent-standards.git"
@@ -30,7 +30,7 @@
     "format:check": "prettier --check .",
     "format": "prettier --write .",
     "check:metadata": "node scripts/check-metadata.ts",
-    "check": "npm run typecheck && npm run lint && npm run check:metadata && npm run format:check",
+    "check": "npm run typecheck && npm run lint && npm run check:metadata && npm run format:check && npm run check:licenses",
     "test": "node --test tests/*.test.ts",
     "test:web": "playwright test -c tests/playwright.config.ts",
     "test:performance": "node scripts/measure-performance.ts",
@@ -38,7 +38,8 @@
     "eval:codex": "node scripts/eval-codex.ts",
     "standards": "node dist/cli.js",
     "bundle": "node dist/bundle.js",
-    "verify:quality": "node scripts/verify-quality.ts"
+    "verify:quality": "node scripts/verify-quality.ts",
+    "check:licenses": "node templates/check-licenses.mjs"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.13.0",

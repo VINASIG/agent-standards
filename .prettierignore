@@ -3,3 +3,7 @@ dist/
 output/
 package-lock.json
 tests/fixtures/broken/
+
+# Standard license texts are verbatim legal documents.
+LICENSE
+LICENSES/

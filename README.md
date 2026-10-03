@@ -82,13 +82,13 @@ An import manages a marked region in `AGENTS.md`, `.vinasig/manifest.json`, loca
 
 ## Contribute and maintain
 
-See [CONTRIBUTING](CONTRIBUTING.md), [SECURITY](SECURITY.md), [community conduct](CODE_OF_CONDUCT.md), [CHANGELOG](CHANGELOG.md), [versioning](docs/versioning.md) and [the license proposal](docs/license-proposal.md).
+See [CONTRIBUTING](CONTRIBUTING.md), [SECURITY](SECURITY.md), [community conduct](CODE_OF_CONDUCT.md), [CHANGELOG](CHANGELOG.md), [versioning](docs/versioning.md) and [the license decision](docs/license-proposal.md).
 
 Maintainer instructions in root `AGENTS.md` govern this repository. They are different from the generated consumer entrypoint. The standard cannot override platform instructions, user authorization, a sandbox or a project's legal obligations.
 
 ## License and distribution
 
-The source is publicly readable. Package metadata remains `UNLICENSED` pending an explicit owner license decision; public visibility does not add a general redistribution grant. [The license proposal](docs/license-proposal.md) records the proposed Apache-2.0 grant and separate third-party rights. The package is private in npm metadata and installation uses a reviewed source checkout.
+The owner selected GPL-3.0-or-later for this offline installer and verification software, with CC-BY-SA-4.0 for policies, skill prose and other documentation. Read [the scope map](LICENSES.md) and [licensing policy](policies/licensing.md). The installer carries the full texts and scope map into every profile. Importing these files does not itself relicense the host project. The package remains private for npm and installation uses a reviewed source checkout.
 
 ## Repository layout
 
@@ -96,7 +96,7 @@ The source is publicly readable. Package metadata remains `UNLICENSED` pending a
 agent-standards/
   AGENTS.md                 Maintainer instructions
   README.md                 Quick start and scope
-  standards.json            31 stable rules
+  standards.json            38 stable rules
   tools.lock.json           Verified tool versions and boundaries
   policies/                 Core and specialized policies
   profiles/                 Core, static web and typed web
@@ -114,3 +114,11 @@ agent-standards/
   output/                   Ignored local evidence and bundles
   dist/                     Ignored compiled CLI
 ```
+
+## License scopes
+
+Read the [organization licensing review](docs/audits/ORGANIZATION_LICENSING_2026-10-04.md) for all ten repositories, purpose-based choices and unresolved legacy material.
+
+VINASIG-authored software uses **GPL-3.0-or-later**. Authored documentation uses **CC-BY-SA-4.0**. Commercial use is allowed under those standard licenses. Fonts and third-party components retain their original terms. Official VINASIG identity assets follow the separate brand policy.
+
+Read [LICENSE](LICENSE), [LICENSES.md](LICENSES.md), [VINASIG Brand Usage Policy](BRAND_POLICY.md) and [the licensing review](docs/audits/licensing-2026-10-04.md) for exact scopes, rationale and remaining review.
