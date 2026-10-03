@@ -76,11 +76,11 @@ async function headerFixture(page: Page, file: string, surface: string) {
   await page.route('https://brand.test/**', (route) =>
     route.fulfill({
       contentType: 'image/svg+xml',
-      body: '<svg xmlns="http://www.w3.org/2000/svg" width="540" height="140"><rect width="540" height="140" fill="#21497b"/></svg>',
+      body: '<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 540 140"><rect width="540" height="140" fill="#21497b"/></svg>',
     }),
   );
   await page.setContent(
-    `<style>body{background:#f7f6f4}header{background:${surface}}a{display:inline-flex;align-items:center;min-height:44px}img{display:block;width:135px;height:auto}</style><header><a href="https://brand.test/" data-brand-logo><img src="https://brand.test/${file}" alt="VINASIG"></a></header>`,
+    `<style>body{background:#f7f6f4}header{background:${surface}}a{display:inline-flex;align-items:center;min-height:44px}img{display:block;width:135px;height:auto}</style><header><a href="https://brand.test/" data-brand-logo><img src="https://brand.test/${file}" width="540" height="140" alt="VINASIG"></a></header>`,
   );
   await page.locator('img').evaluate((image) => {
     if (!(image instanceof HTMLImageElement))
@@ -118,6 +118,8 @@ test('header inspector rejects padded cards, altered artwork and distortion', as
   await page.locator('img').evaluate((image) => {
     image.style.cssText =
       'width:100px;height:100px;border-radius:8px;filter:invert(1)';
+    image.setAttribute('width', '100');
+    image.setAttribute('height', '100');
   });
   const kinds = (await page.evaluate(inspectHeaderBrand)).map(
     (finding) => finding.kind,
@@ -128,6 +130,7 @@ test('header inspector rejects padded cards, altered artwork and distortion', as
     'header-logo-crop',
     'header-logo-effect',
     'header-logo-ratio',
+    'header-logo-intrinsic-ratio',
   ])
     expect(kinds).toContain(kind);
 });

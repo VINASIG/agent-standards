@@ -229,7 +229,23 @@ export function inspectHeaderBrand() {
   if (target.width < 44 || target.height < 44)
     add(link, 'header-logo-target', `${target.width} x ${target.height}`);
   const bounds = image.getBoundingClientRect();
-  const ratio = image.naturalWidth / image.naturalHeight;
+  // The supported original horizontal exports share this reviewed viewBox.
+  // Their percentage dimensions produce rounded naturalWidth/naturalHeight
+  // values that differ between engines. Do not infer the artwork ratio from
+  // that raster fallback or request an asset during a user's local workflow.
+  const ratio = 540 / 140;
+  const declaredWidth = Number(image.getAttribute('width'));
+  const declaredHeight = Number(image.getAttribute('height'));
+  if (
+    declaredWidth <= 0 ||
+    declaredHeight <= 0 ||
+    Math.abs(declaredWidth / declaredHeight - ratio) > 0.0001
+  )
+    add(
+      image,
+      'header-logo-intrinsic-ratio',
+      'Declare the original aspect ratio',
+    );
   if (
     bounds.height <= 0 ||
     Math.abs(bounds.width / bounds.height - ratio) > 0.02
