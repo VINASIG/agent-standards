@@ -1,5 +1,14 @@
 # Changelog
 
+## Transparent header clarification - 2026-10-04
+
+- Record the owner's approval for original transparent header lockups matched to the actual surface under WEB-001.
+- Reject padded or rounded logo cards, altered artwork and live-text reconstructions. Keep original bytes and a usable link target.
+- Add positive and negative rendered-header regressions for variant selection, geometry and presentation.
+- Detect authored round bullet characters as well as default list markers under LANG-004.
+- Clarify WEB-008 for styled initial HTML and script-unavailable states after real QR and design-system regressions exposed native popup fallbacks.
+- Surface the approved header rule in the installer entrypoint and responsive skill. Unrelated design recommendations remain proposals.
+
 ## Interface rules clarification - 2026-10-03
 
 - Make visible punctuation, sentence case and custom list markers mandatory under LANG-004.
