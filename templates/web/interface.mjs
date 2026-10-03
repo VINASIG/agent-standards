@@ -44,6 +44,13 @@ export function inspectInterface() {
     'WHO',
     'NHS',
     'NVQS',
+    'BMI',
+    'KB',
+    'MB',
+    'GB',
+    'TB',
+    'AM',
+    'PM',
   ]);
   /** @param {Element} element */
   function visible(element) {
@@ -73,7 +80,8 @@ export function inspectInterface() {
     if (/:\s/.test(text)) add(element, text, 'label-colon');
     if (/\([^)]*[\p{L}][^)]*\)/u.test(text))
       add(element, text, 'parenthetical-copy');
-    const words = text.match(/\p{L}{2,}/gu) ?? [];
+    const words =
+      text.replace(/#[a-f\d]{3,8}\b/gi, '').match(/\p{L}{2,}/gu) ?? [];
     if (
       words.length &&
       words.every((word) => word === word.toUpperCase()) &&

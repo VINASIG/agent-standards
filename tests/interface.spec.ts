@@ -40,7 +40,7 @@ test('copy inspector preserves required syntax and user-controlled output', asyn
   page,
 }) => {
   await page.setContent(
-    '<h1>QR Generator</h1><p>Download PNG or SVG.</p><p>Meet at 09:30.</p><a href="https://example.com">https://example.com</a><code>WIFI:T:WPA;S:Network;</code><p data-user-content>USER: input; untouched — example (note)</p><ul style="list-style:none"><li>Custom row</li></ul><p data-copy-notation="Verbatim legal citation">Article 10(3)</p>',
+    '<h1>QR Generator</h1><p>Download PNG or SVG.</p><p>BMI</p><p>2.4 MB</p><p>#0A6CFF</p><p>Meet at 09:30.</p><a href="https://example.com">https://example.com</a><code>WIFI:T:WPA;S:Network;</code><p data-user-content>USER: input; untouched — example (note)</p><ul style="list-style:none"><li>Custom row</li></ul><p data-copy-notation="Verbatim legal citation">Article 10(3)</p>',
   );
   expect(await page.evaluate(inspectInterface)).toEqual([]);
 });
