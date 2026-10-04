@@ -13,6 +13,8 @@ async function surfaceFixture(page: Page, css = '') {
     body { font:16px sans-serif; }
     input[type=checkbox],input[type=radio],input[type=range],input[type=search],progress,meter { appearance:none; }
     input[type=checkbox],input[type=radio] { width:18px;height:18px;border:1px solid #70696a;background:white; }
+    input[type=checkbox]::before,input[type=radio]::before { content:'';display:block;width:10px;height:10px;background:#214f7e;opacity:0; }
+    input[type=checkbox]:checked::before,input[type=radio]:checked::before { opacity:1; }
     input[type=range]::-webkit-slider-runnable-track { height:6px;background:#ddd; }
     input[type=range]::-webkit-slider-thumb { appearance:none;width:18px;height:18px;background:#214f7e; }
     input[type=range]::-moz-range-track { height:6px;background:#ddd; }
@@ -66,6 +68,19 @@ test('full control gate rejects an unstyled scrollable surface in each engine', 
   expect(
     (await page.evaluate(inspectControlSurfaces)).map((item) => item.kind),
   ).toContain('control-scrollbar');
+});
+
+test('selected checkbox and radio marks stay visible in authored controls', async ({
+  page,
+}) => {
+  await surfaceFixture(page);
+  await page.locator('#check').check();
+  await page.locator('#radio').check();
+  expect(await page.evaluate(inspectControlSurfaces)).toEqual([]);
+  await page.addStyleTag({ content: '#check::before{display:none}' });
+  expect(
+    (await page.evaluate(inspectControlSurfaces)).map((item) => item.kind),
+  ).toContain('control-selection-mark');
 });
 
 test('catalog examples below the fold are measured when their control is in view', async ({

@@ -12,6 +12,8 @@ The owner reinforced the requirement for complete styled controls. WEB-008, its 
 
 `inspectControlSurfaces` supplements the existing interface and indicator guards. It checks appearance, authored slider/progress subparts, scrollable surfaces, disclosure indicators and expanded popup geometry/surfaces. Stylesheet rules are filtered by media and feature support. WebKit scrollbar parts only count in an engine that supports them. A universal scrollbar pseudo selector is matched against every element. Removing a scrollbar is not accepted as evidence of styling.
 
+Checked checkbox/radio inputs must retain a visible authored selection mark or background image. A separate negative fixture removes the mark while retaining the native input and checked state. This closes the gap where appearance none could produce an empty square even after selection.
+
 Catalog specimens below the fold are checked for viewport fit after their anchors enter the viewport. Fixed overlays always require viewport fit. A regression proves that an offscreen popup still fails once its trigger is in view. Negative fixtures retain their intended defects and cover unstyled controls, scrollbars, absent subparts, platform disclosure markers and offscreen/transparent popups.
 
 ## Research used

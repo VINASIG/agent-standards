@@ -252,6 +252,29 @@ export function inspectControlSurfaces() {
         'control-native-surface',
         'Control still uses a platform appearance',
       );
+    if (
+      element instanceof HTMLInputElement &&
+      ['checkbox', 'radio'].includes(element.type) &&
+      (element.checked || element.indeterminate) &&
+      style.appearance === 'none'
+    ) {
+      const hasMark = ['::before', '::after'].some((pseudo) => {
+        const mark = getComputedStyle(element, pseudo);
+        return (
+          !['none', 'normal'].includes(mark.content) &&
+          mark.display !== 'none' &&
+          Number(mark.opacity) > 0 &&
+          parseFloat(mark.width) > 1 &&
+          parseFloat(mark.height) > 1
+        );
+      });
+      if (!hasMark && style.backgroundImage === 'none')
+        add(
+          element,
+          'control-selection-mark',
+          'Selected control has no authored visible mark',
+        );
+    }
     if (element instanceof HTMLInputElement && element.type === 'range') {
       const parts = CSS.supports('selector(input::-moz-range-thumb)')
         ? ['::-moz-range-track', '::-moz-range-thumb']
