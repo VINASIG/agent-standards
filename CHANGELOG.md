@@ -1,5 +1,12 @@
 # Changelog
 
+## Complete control surface enforcement - 2026-10-04
+
+- Address the owner's recurring picker and popup reports. WEB-008 already prohibited platform popups, but inventory and automation omitted internal scrollbars and other native subparts.
+- Require an explicit rendered/source control inventory, including hidden interaction states, checkbox/radio, search clear, progress/meter, disclosure indicators, resize/step/upload affordances and scrolling surfaces. Preserve working semantics, keyboard, touch, direct entry and high-contrast behavior.
+- Add inspectControlSurfaces with passing and deliberately broken fixtures. A reset or appearance none alone cannot certify range/progress styling. Check real opened and scrolled controls, expected counts, screenshots and deployed pages.
+- Route the expanded rule through the installer, responsive skill and integration guide. Reuse the design-system stylesheet without adding a UI dependency or a competing token system.
+
 ## VINASIG header destination clarification - 2026-10-04
 
 - Apply the owner's explicit homepage destination to all VINASIG header/sidebar logo links, including locale and documentation pages. Keep GitHub source and project-navigation links distinct.

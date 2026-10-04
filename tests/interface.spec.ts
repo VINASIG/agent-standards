@@ -3,7 +3,99 @@ import {
   inspectInterface,
   inspectHeaderBrand,
   inspectControlIndicators,
+  inspectControlSurfaces,
 } from '../templates/web/interface.mjs';
+
+async function surfaceFixture(page: Page, css = '') {
+  await page.setContent(`<!doctype html><style>
+    :root { scrollbar-color: #70696a #f7f6f4; scrollbar-width:thin; }
+    ::-webkit-scrollbar-thumb { background:#70696a; }
+    body { font:16px sans-serif; }
+    input[type=checkbox],input[type=radio],input[type=range],input[type=search],progress,meter { appearance:none; }
+    input[type=checkbox],input[type=radio] { width:18px;height:18px;border:1px solid #70696a;background:white; }
+    input[type=range]::-webkit-slider-runnable-track { height:6px;background:#ddd; }
+    input[type=range]::-webkit-slider-thumb { appearance:none;width:18px;height:18px;background:#214f7e; }
+    input[type=range]::-moz-range-track { height:6px;background:#ddd; }
+    input[type=range]::-moz-range-thumb { width:18px;height:18px;background:#214f7e; }
+    progress::-webkit-progress-value { background:#214f7e; }
+    progress::-moz-progress-bar { background:#214f7e; }
+    progress { height:10px;width:200px; }
+    summary { list-style:none;padding-left:24px; }
+    summary::marker { content:''; }
+    summary::before { content:'';display:inline-block;width:16px;height:16px;background:black;mask:url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"%3E%3Cpath d="m9 18 6-6-6-6"/%3E%3C/svg%3E'); }
+    #popup { position:fixed;top:120px;left:10px;width:200px;height:100px;overflow:auto;background:white;scrollbar-color:#70696a #f7f6f4;scrollbar-width:thin; }
+    .option { height:44px; }
+    ${css}
+  </style><label><input type="checkbox" id="check">Remember preference</label><label><input type="radio" id="radio">Choose value</label><label>Level<input type="range" id="range"></label><label>Find<input type="search" id="find"></label><progress id="progress" max="10" value="5">5</progress><details><summary id="summary">More settings</summary><p>Details</p></details><button id="trigger" type="button" role="combobox" aria-haspopup="listbox" aria-expanded="true" aria-controls="popup">Choice</button><div id="popup" role="listbox" aria-label="Choices">${Array.from({ length: 10 }, (_, index) => `<div class="option" role="option">Value ${String(index)}</div>`).join('')}</div>`);
+}
+
+test('full control gate accepts authored parts, disclosure and scrolling popup', async ({
+  page,
+}, info) => {
+  await page.setViewportSize({ width: 360, height: 800 });
+  await surfaceFixture(page);
+  expect(await page.evaluate(inspectControlSurfaces)).toEqual([]);
+  await page.screenshot({
+    path: info.outputPath('authored-control-surfaces.png'),
+  });
+});
+
+for (const [css, kind] of [
+  ['#check { appearance:auto; }', 'control-native-surface'],
+  ['#popup { left:340px; }', 'control-popup-viewport'],
+  ['#popup { background:transparent; }', 'control-popup-surface'],
+  [
+    '#summary { list-style:disclosure-closed; } #summary::marker { content:normal; }',
+    'control-disclosure-marker',
+  ],
+] as const)
+  test(`full control gate rejects ${kind}`, async ({ page }) => {
+    await page.setViewportSize({ width: 360, height: 800 });
+    await surfaceFixture(page, css);
+    expect(
+      (await page.evaluate(inspectControlSurfaces)).map((item) => item.kind),
+    ).toContain(kind);
+  });
+
+test('full control gate rejects an unstyled scrollable surface in each engine', async ({
+  page,
+}) => {
+  await page.setContent(
+    '<!doctype html><style>:root{scrollbar-color:gray white;scrollbar-width:thin}html::-webkit-scrollbar-thumb{background:gray}#list{height:100px;width:200px;overflow:auto;scrollbar-color:auto;scrollbar-width:auto}</style><div id="list"><div style="height:500px">Scrollable choices</div></div>',
+  );
+  expect(
+    (await page.evaluate(inspectControlSurfaces)).map((item) => item.kind),
+  ).toContain('control-scrollbar');
+});
+
+test('catalog examples below the fold are measured when their control is in view', async ({
+  page,
+}) => {
+  await surfaceFixture(
+    page,
+    '#trigger{position:absolute;top:1200px}#popup{position:absolute;top:1240px}',
+  );
+  expect(await page.evaluate(inspectControlSurfaces)).toEqual([]);
+  await page.locator('#trigger').scrollIntoViewIfNeeded();
+  expect(await page.evaluate(inspectControlSurfaces)).toEqual([]);
+  await page.locator('#popup').evaluate((element) => {
+    element.style.left = '2000px';
+  });
+  expect(
+    (await page.evaluate(inspectControlSurfaces)).map((item) => item.kind),
+  ).toContain('control-popup-viewport');
+});
+
+test('appearance none alone does not certify slider tracks or thumbs', async ({
+  page,
+}) => {
+  await page.setContent(
+    '<style>html{scrollbar-color:gray white}input{appearance:none}</style><label>Level<input type="range"></label>',
+  );
+  expect(
+    (await page.evaluate(inspectControlSurfaces)).map((item) => item.kind),
+  ).toContain('control-range-part');
+});
 
 async function indicatorFixture(page: Page, style = '', direction = 'ltr') {
   await page.setContent(`<style>
