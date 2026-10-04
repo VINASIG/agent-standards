@@ -175,7 +175,7 @@ async function headerFixture(page: Page, file: string, surface: string) {
     }),
   );
   await page.setContent(
-    `<style>body{background:#f7f6f4}header{background:${surface}}a{display:inline-flex;align-items:center;min-height:44px}img{display:block;width:135px;height:auto}</style><header><a href="https://brand.test/" data-brand-logo><img src="https://brand.test/${file}" width="540" height="140" alt="VINASIG"></a></header>`,
+    `<style>body{background:#f7f6f4}header{background:${surface}}a{display:inline-flex;align-items:center;min-height:44px}img{display:block;width:135px;height:auto}</style><header><a href="https://vinasig.io.vn/" aria-label="VINASIG home" data-brand-logo><img src="https://brand.test/${file}" width="540" height="140" alt="VINASIG"></a></header>`,
   );
   await page.locator('img').evaluate((image) => {
     if (!(image instanceof HTMLImageElement))
@@ -247,4 +247,51 @@ test('header inspector rejects a mismatched variant or missing artwork', async (
   expect(
     (await page.evaluate(inspectHeaderBrand)).map((finding) => finding.kind),
   ).toContain('header-logo-count');
+});
+
+test('header logo opens the canonical VINASIG homepage by click and keyboard', async ({
+  page,
+}) => {
+  await page.route('https://vinasig.io.vn/', (route) =>
+    route.fulfill({ contentType: 'text/html', body: '<h1>VINASIG home</h1>' }),
+  );
+  for (const activation of ['click', 'keyboard']) {
+    await headerFixture(page, 'reversed.svg', '#443a3b');
+    expect(await page.evaluate(inspectHeaderBrand)).toEqual([]);
+    const logo = page.getByRole('link', { name: 'VINASIG home' });
+    if (activation === 'click') await logo.click();
+    else {
+      await logo.focus();
+      await page.keyboard.press('Enter');
+    }
+    await expect(page).toHaveURL('https://vinasig.io.vn/');
+    await expect(
+      page.getByRole('heading', { name: 'VINASIG home' }),
+    ).toBeVisible();
+  }
+});
+
+test('header inspector rejects organization, project and locale destinations', async ({
+  page,
+}) => {
+  await headerFixture(page, 'primary-color.svg', '#f7f6f4');
+  for (const href of [
+    'https://github.com/VINASIG',
+    'https://qr.vinasig.io.vn/',
+    'https://vinasig.io.vn/vi/',
+    '#main',
+  ]) {
+    await page.locator('[data-brand-logo]').evaluate((link, value) => {
+      link.setAttribute('href', value);
+    }, href);
+    expect(
+      (await page.evaluate(inspectHeaderBrand)).map((finding) => finding.kind),
+    ).toContain('header-logo-home');
+  }
+  await page.locator('[data-brand-logo]').evaluate((link) => {
+    link.removeAttribute('href');
+  });
+  expect(
+    (await page.evaluate(inspectHeaderBrand)).map((finding) => finding.kind),
+  ).toContain('header-logo-link');
 });

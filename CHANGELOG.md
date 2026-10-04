@@ -1,5 +1,11 @@
 # Changelog
 
+## VINASIG header destination clarification - 2026-10-04
+
+- Apply the owner's explicit homepage destination to all VINASIG header/sidebar logo links, including locale and documentation pages. Keep GitHub source and project-navigation links distinct.
+- Add a mandatory homepage-destination check to the existing transparent-header inspector. Positive fixtures exercise native click and keyboard activation. Negative fixtures reject organization, project, locale, anchor-only and missing destinations.
+- Route the clarification through WEB-001, the installer entrypoint and the responsive skill. Preserve original transparent artwork, surface-based variants and existing presentation/geometry checks. Verify both the local build and the deployed page before claiming completion.
+
 ## Dropdown indicator spacing clarification - 2026-10-04
 
 - Clarify WEB-008 after the owner reported recurring crowded dropdown arrows in QR Generator. The shared trigger used the same 12 px padding on all sides without an indicator-spacing check.
