@@ -1,5 +1,12 @@
 # Changelog
 
+## Dropdown indicator spacing clarification - 2026-10-04
+
+- Clarify WEB-008 after the owner reported recurring crowded dropdown arrows in QR Generator. The shared trigger used the same 12 px padding on all sides without an indicator-spacing check.
+- Require a 16 CSS px inner trailing inset and a 12 CSS px selected-value gap for ordinary form dropdowns, using existing spacing tokens and logical padding. Preserve declared SVG size, wrapping, initial HTML and script-unavailable presentation.
+- Add a portable geometry inspector with positive and deliberately failing fixtures for missing markers, crowded spacing, clipping and shrunken icons, including right-to-left and long/enlarged labels.
+- Route the clarification through the installer entrypoint and responsive skill. Compact platform-reference specimens retain their documented metrics. Existing behavior and quality budgets remain required.
+
 ## Licensing policy and distribution - 2026-10-04
 
 - Implement the owner's organization-wide licensing direction. Default software selection is AGPL-3.0-or-later, with purpose-based GPL/LGPL choices, CC BY-SA knowledge, upstream OFL fonts and suitable database licensing.

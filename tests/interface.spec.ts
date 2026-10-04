@@ -2,7 +2,102 @@ import { test, expect, type Page } from '@playwright/test';
 import {
   inspectInterface,
   inspectHeaderBrand,
+  inspectControlIndicators,
 } from '../templates/web/interface.mjs';
+
+async function indicatorFixture(page: Page, style = '', direction = 'ltr') {
+  await page.setContent(`<style>
+    * { box-sizing: border-box; }
+    .select-control { display:flex; align-items:center; justify-content:space-between; gap:12px; width:260px; min-height:48px; padding:12px; padding-inline-end:16px; border:1px solid; direction:${direction}; font:16px sans-serif; }
+    [data-control-value] { min-width:0; overflow-wrap:anywhere; }
+    [data-control-indicator] { flex:none; }
+    ${style}
+    </style><button id="choice" type="button" class="select-control" role="combobox" aria-expanded="false" aria-label="Choice"><span data-control-value>Selected value</span><svg data-control-indicator aria-hidden="true" width="20" height="20" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" /></svg></button>`);
+}
+
+test('indicator inspector accepts tokens, logical spacing, long text and initial disabled HTML', async ({
+  page,
+}, info) => {
+  await page.setViewportSize({ width: 320, height: 800 });
+  for (const direction of ['ltr', 'rtl']) {
+    await indicatorFixture(page, '', direction);
+    expect(await page.evaluate(inspectControlIndicators)).toEqual([]);
+    await page.locator('[data-control-value]').evaluate((element) => {
+      element.textContent =
+        'A deliberately long selected value that wraps across several lines';
+    });
+    await page.locator('#choice').evaluate((element) => {
+      element.style.fontSize = '32px';
+      element.setAttribute('disabled', '');
+    });
+    expect(await page.evaluate(inspectControlIndicators)).toEqual([]);
+    await page.screenshot({
+      path: info.outputPath(`indicator-${direction}-enlarged.png`),
+    });
+  }
+});
+
+for (const inset of [0, 8, 12, 15.5])
+  test(`indicator inspector rejects a ${String(inset)} px inset`, async ({
+    page,
+  }) => {
+    await indicatorFixture(
+      page,
+      `.select-control { padding-inline-end:${String(inset)}px; }`,
+    );
+    expect(
+      (await page.evaluate(inspectControlIndicators)).map(
+        (finding) => finding.kind,
+      ),
+    ).toContain('control-indicator-inset');
+  });
+
+test('indicator inspector rejects crowded text, shrunken icons, clipping and missing markers', async ({
+  page,
+}) => {
+  for (const [style, kind] of [
+    [
+      '.select-control { justify-content:flex-start; gap:4px; }',
+      'control-indicator-gap',
+    ],
+    ['[data-control-indicator] { width:10px; }', 'control-indicator-size'],
+    [
+      '[data-control-indicator] { position:relative; left:30px; }',
+      'control-indicator-clipping',
+    ],
+  ]) {
+    await indicatorFixture(page, style);
+    expect(
+      (await page.evaluate(inspectControlIndicators)).map(
+        (finding) => finding.kind,
+      ),
+    ).toContain(kind);
+  }
+  await indicatorFixture(page);
+  await page.locator('[data-control-indicator]').evaluate((element) => {
+    element.removeAttribute('data-control-indicator');
+  });
+  expect(
+    (await page.evaluate(inspectControlIndicators)).map(
+      (finding) => finding.kind,
+    ),
+  ).toContain('control-indicator-markup');
+});
+
+test('indicator inspector ignores hidden controls and compact unmarked platform specimens', async ({
+  page,
+}) => {
+  await indicatorFixture(page, '.select-control { padding-inline-end:0; }');
+  await page.locator('#choice').evaluate((element) => {
+    element.setAttribute('hidden', '');
+    element.style.display = 'none';
+  });
+  expect(await page.evaluate(inspectControlIndicators)).toEqual([]);
+  await page.setContent(
+    '<details><summary>Closed</summary><button class="select-control">Hidden content</button></details><button class="platform-reference">Compact platform example</button>',
+  );
+  expect(await page.evaluate(inspectControlIndicators)).toEqual([]);
+});
 
 test('copy inspector rejects punctuation, uppercase, bullets and platform popups', async ({
   page,

@@ -91,4 +91,6 @@ The snapshot includes reference presets and reusable browser helpers. A consumer
 
 For a static checked-JavaScript consumer, extend the local `configs/tsconfig-js.json` and include the actual scripts. For a typed consumer, extend `configs/tsconfig-strict.json`, then add the framework's required options and run its native checker. Use `configs/eslint.mjs` only where the project provides type information. The strict fixture verification demonstrates these paths; it does not certify all frameworks.
 
+For ordinary custom selects, mark selected-value spans with `data-control-value` and decorative SVGs with `data-control-indicator` in initial and enhanced HTML. Call `inspectControlIndicators` alongside the existing interface inspector on real routes. Add a nonzero expected-control count so removing a control or its markers cannot silently bypass the consumer regression. WEB-008 defines the inset, gap and size acceptance criteria. Check long/enlarged labels and script-unavailable states, and inspect screenshots. This helper does not certify keyboard interaction or accessibility.
+
 The import does not auto-register CI, install a browser, create secrets, add analytics, connect account dashboards or send data to an external scanner. These steps need a relevant task and appropriate authorization.
