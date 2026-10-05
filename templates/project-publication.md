@@ -15,6 +15,10 @@ GitHub displays an organization's public README from a public `.github` reposito
 
 ## Publish useful, accurate descriptions
 
+### Set Repo details when creating a repository
+
+For every new VINASIG GitHub repository, configure the About panel during creation rather than waiting for publication. Set a nonempty outcome-based description, a homepage pointing to the verified canonical website or the repository README when no website is live, and a small set of relevant discovery topics. Apply this to private and source-only repositories as well. Preserve the owner-approved visibility. Read the saved description, homepage and topics back with the GitHub API or the actual About panel and record the repository URL and observation. A package.json field alone does not prove that GitHub Repo details were set. If account access or creation authorization is unavailable, prepare the exact fields and report them as pending.
+
 1. Confirm the actual public repository, supported behavior and deployed canonical destination. Distinguish a deployed tool from source-only, preview, private, archived or planned work. Only working public utilities belong in the profile's active tools section. Public standards and assets belong in the shared resources section.
 2. Write the main user outcome in familiar language. Add meaningful constraints when they affect use. Local processing, supported inputs and output formats may matter. Do not advertise two languages, a framework or an internal dependency version as the main product feature. Preserve the established language and official product names.
 3. Update the affected facts in both profile languages and the website inventory. Keep usage and source links distinct. Use current canonical domains and the correct locale route for each tool. Do not assume every website uses the same default locale.

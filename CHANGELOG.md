@@ -1,5 +1,11 @@
 # Changelog
 
+## Repo details at project creation - 2026-10-06
+
+- Clarify CORE-009 following the owner's explicit requirement that agents configure GitHub Repo details for every newly created project, including private and source-only repositories.
+- Require a truthful description, verified website or README homepage, relevant topics and saved-value readback. Package metadata alone is not account evidence. Preserve creation and visibility authorization.
+- Route the same procedure through the publication checklist, workflow skill and generated entrypoint for every profile. Test routing and instruction size without adding an online operation to the offline installer.
+
 ## Domain and discovery completion handoff - 2026-10-06
 
 - Add SEARCH-003 at the owner's request: finish a new public VINASIG website, launch, host/hosting change or DNS/discovery repair with a scoped review and concrete missing Cloudflare DNS/Search Console proposals.

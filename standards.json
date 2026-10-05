@@ -81,8 +81,8 @@
       "level": "MUST",
       "summary": "Synchronize public VINASIG project information",
       "verification": ["agent"],
-      "evidence": "Affected public README, repository metadata, website inventory, organization profile translations and exact publication evidence",
-      "exceptions": "Applies only to VINASIG-owned public project information. Preserve current authorization and unrelated changes. Prepare exact edits and report inaccessible or unauthorized destinations as pending."
+      "evidence": "Saved GitHub description, homepage and topics readback for every new repository, affected README, website inventory, organization profile translations and exact publication evidence",
+      "exceptions": "Applies only to VINASIG-owned projects. Repo details apply to private and source-only creation too. Use a README homepage before live deployment. Preserve current authorization and unrelated changes. Prepare exact edits and report inaccessible or unauthorized destinations as pending."
     },
     {
       "id": "LANG-001",

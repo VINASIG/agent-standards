@@ -28,6 +28,23 @@ await test('new web projects receive the shared header/footer procedure', () => 
   assert.doesNotMatch(entrypoint('core', '0.1.0'), /WEB-009|inspectSiteChrome/);
 });
 
+await test('every profile routes new repositories to verified Repo details', () => {
+  for (const profile of ['core', 'web-static', 'web-typescript'] as const) {
+    const block = entrypoint(profile, '0.1.0');
+    assert.match(block, /CORE-009/);
+    assert.match(
+      block,
+      /Set Repo details for every new GitHub repository immediately/,
+    );
+    assert.match(
+      block,
+      /description, verified website or README homepage, and relevant topics/,
+    );
+    assert.match(block, /Read saved GitHub values back/);
+    assert(Buffer.byteLength(block) < 8192);
+  }
+});
+
 async function workspace(): Promise<string> {
   const root = path.join(repositoryRoot, 'output/tests', randomUUID());
   await mkdir(root, { recursive: true });
