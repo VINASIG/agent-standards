@@ -9,3 +9,5 @@ Browser gates run against the production preview or an explicitly approved local
 Configs under the snapshot are opt-in presets. They do not replace a consumer's existing ESLint/tsconfig/package files automatically. Install only the chosen development tools with the existing package manager and lockfile. See integration for the tested wrapper pattern.
 
 New VINASIG websites apply WEB-009 before creating layouts. Read `templates/web/site-chrome.md`, reuse the reviewed shared source and add header/footer regressions within the existing browser infrastructure.
+
+Before a new public website handoff, launch, host change or DNS/discovery repair, apply SEARCH-003 and read `templates/web/domain-discovery.md`. Review domain/DNS, live HTTPS and sitemap, then propose missing Cloudflare DNS or Search Console setup within task authorization. Keep already-correct setup and distinguish submission from indexing.

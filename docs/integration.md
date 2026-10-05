@@ -106,3 +106,9 @@ This instruction requires a scoped review and truthful synchronization under cur
 ## Start a website with common chrome
 
 Both web profiles include WEB-009, `templates/web/site-chrome.md` and the `inspectSiteChrome` helper. The generated AGENTS entrypoint routes new-project work to this checklist. The installer deliberately does not inject layout components or add dependencies. Adopt the reviewed design-system header/footer source in project-owned files, pin its revision/digest, and test every layout route before publishing. Existing consumers use a reviewed bundle update, never manual snapshot edits.
+
+## Finish a public website with domain and discovery recommendations
+
+Both web profiles include SEARCH-003 and `templates/web/domain-discovery.md`. The generated web entrypoint, workflow/search skills and publication checklist route a new public website, launch, host/hosting change or DNS/discovery repair to a concrete Cloudflare DNS and Search Console handoff. Record existing correct setup, exact missing DNS fields, the actual deployed sitemap URL and unavailable dashboard observations. Submission, Google's fetch and confirmed indexing are separate states. Ordinary updates on an unchanged healthy domain do not require repeating setup.
+
+The installer remains offline: it neither visits dashboards nor applies DNS, creates properties or submits sitemaps. Account execution follows existing user authorization. Core-only consumers do not receive the web checklist or a web launch instruction. Adopting the new mandatory handoff in existing consumers requires a reviewed bundle update; preserve owner text and installer backups, review the diff/digest and keep the existing 8 KiB root instruction budget. Newly created web projects receive the route when importing the updated snapshot. A prior pinned snapshot does not change automatically.

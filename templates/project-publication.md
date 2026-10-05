@@ -23,6 +23,8 @@ GitHub displays an organization's public README from a public `.github` reposito
 6. Review the exact diff before an authorized commit. Check relevant destinations, translation agreement and actual rendered organization profile after pushing. Record the remote revision and evidence. A successful source push alone does not establish website deployment or rendered profile behavior.
 7. In the handoff, state which destinations changed, which were reviewed and already accurate, and which remain pending with a specific reason. Keep private contacts, unpublished plans, credentials and local machine paths out of public profile copy.
 
+For a new public website handoff, launch, canonical-host/hosting change or DNS/discovery repair, also apply SEARCH-003 using the project's adopted web profile and its `templates/web/domain-discovery.md`. Include the concrete missing DNS and sitemap submission proposals or report already-correct setup. A core-only source project has no public website setup requirement. DNS account changes and indexing submissions follow existing task authorization; this publication checklist does not itself perform or authorize them.
+
 ## Authority and scoped updates
 
 Follow CORE-003 and current user authorization for commits, publication, repository visibility and changes in another checkout. Authorization already given for organization publication or related metadata updates persists. Do not ask again for a routine step already authorized. Without the needed access or authorization, prepare a concrete proposed edit and report the uncompleted destination. Do not silently claim that related repositories were updated.

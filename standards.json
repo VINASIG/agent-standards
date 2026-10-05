@@ -256,6 +256,15 @@
       "exceptions": "Approved private/noindex policy applies; external accounts may be NOT_RUN."
     },
     {
+      "id": "SEARCH-003",
+      "scope": "public-web",
+      "level": "MUST",
+      "summary": "Complete public website domain and discovery handoff",
+      "verification": ["agent"],
+      "evidence": "Canonical host, hosting configuration, observed DNS/HTTPS/sitemap, concrete missing Cloudflare DNS and Search Console proposals, and distinct submission/fetch/indexing states",
+      "exceptions": "Applies to a new public VINASIG website handoff, launch, host/hosting change or DNS/discovery repair. Non-web/private/noindex work is NOT_APPLICABLE. Unavailable dashboard checks are NOT_RUN. Account writes follow existing task authorization; retain healthy setup on ordinary updates."
+    },
+    {
       "id": "PERF-001",
       "scope": "web-performance",
       "level": "MUST",

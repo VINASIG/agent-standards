@@ -1,5 +1,13 @@
 # Changelog
 
+## Domain and discovery completion handoff - 2026-10-06
+
+- Add SEARCH-003 at the owner's request: finish a new public VINASIG website, launch, host/hosting change or DNS/discovery repair with a scoped review and concrete missing Cloudflare DNS/Search Console proposals.
+- Add the owner-provided dashboard links, exact DNS proposal fields, hosting dependencies, live HTTPS/sitemap checks, healthy-setup reuse and distinct submitted/fetched/indexed observations to `templates/web/domain-discovery.md`.
+- Route the checklist through both web profiles, workflow/search skills, project publication guidance and the generated web AGENTS entrypoint. Core-only entrypoint and template selection remain unchanged.
+- Preserve existing account authorization and the offline installer contract. This policy update itself applies no DNS change or Google submission and creates no automatic follow-up. Existing consumers adopt the mandatory preview clarification with a reviewed bundle update and preserved rollback records.
+- Record the rule rationale, generated instruction artifacts, validation limits and migration procedure in [the dated audit](docs/audits/domain-discovery-2026-10-06.md).
+
 ## Public organization profile synchronization - 2026-10-05
 
 - Add CORE-009 at the owner's request to keep the organization profile current when tools or their public information change. Review affected repository details, the VINASIG website inventory and both existing profile languages together.
