@@ -97,6 +97,12 @@ The import does not auto-register CI, install a browser, create secrets, add ana
 
 WEB-008 also requires `inspectControlSurfaces` on initial and opened real controls. Import it from the same local interface template. Inventory controls before testing, including hidden states, and assert their expected count. The helper rejects unstyled native checkbox/radio/search/progress surfaces, missing range/progress subparts, platform scrollbars, disclosure markers and offscreen or transparent expanded popups. Use the design-system control-surfaces stylesheet, preserve keyboard/form/scroll behavior, review screenshots and recheck the published website. No helper alone approves a visual result.
 
+## Keep public project information current
+
+Every profile includes CORE-009 and `templates/project-publication.md`. The generated AGENTS entrypoint and workflow skill route new VINASIG project publication and changed public facts to the project repository, VINASIG website inventory and public organization profile. Maintain `VINASIG/.github/profile/README.md` and its existing Vietnamese translation together. The profile uses GitHub's organization repository convention, not the personal-account convention.
+
+This instruction requires a scoped review and truthful synchronization under current user authorization. The offline installer does not contact GitHub, publish a consumer, change repository visibility or modify sibling repositories. Prepare exact edits and report pending destinations when access or authorization is missing. Use a reviewed bundle update to adopt the new rule in existing consumers, preserve rollback records and record the source revision.
+
 ## Start a website with common chrome
 
 Both web profiles include WEB-009, `templates/web/site-chrome.md` and the `inspectSiteChrome` helper. The generated AGENTS entrypoint routes new-project work to this checklist. The installer deliberately does not inject layout components or add dependencies. Adopt the reviewed design-system header/footer source in project-owned files, pin its revision/digest, and test every layout route before publishing. Existing consumers use a reviewed bundle update, never manual snapshot edits.

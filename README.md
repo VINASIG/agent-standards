@@ -52,6 +52,7 @@ Read [the initial local validation](docs/audits/INITIAL_VALIDATION.md) and [publ
 4. Start a fresh Codex session in the consumer repository. Check actual instruction and skill discovery.
 5. For a new VINASIG website, follow WEB-009 and the installed `templates/web/site-chrome.md` before creating its layout. Reuse the reviewed shared header/footer and add real route/locale/theme regressions.
 6. Adopt the appropriate quality configuration in a separate reviewed change. The installer does not edit `package.json`, existing lint configurations or MCP settings.
+7. When publishing a VINASIG project or changing public project facts, follow CORE-009 and the installed `templates/project-publication.md`. Synchronize the affected repository details, website inventory and both organization profile languages within the task's authorization.
 
 ```sh
 node dist/bundle.js output/bundles/reviewed-0.1.0
@@ -97,7 +98,7 @@ The owner selected GPL-3.0-or-later for this offline installer and verification 
 agent-standards/
   AGENTS.md                 Maintainer instructions
   README.md                 Quick start and scope
-  standards.json            39 stable rules
+  standards.json            40 stable rules
   tools.lock.json           Verified tool versions and boundaries
   policies/                 Core and specialized policies
   profiles/                 Core, static web and typed web

@@ -14,3 +14,4 @@ This guide governs development of this repository. The consumer entrypoint is ge
 - Keep the published standard independent of private asset archives, account tokens and personal machine paths.
 
 - For new VINASIG website guidance or header/footer changes, maintain WEB-009, the project-start checklist and the generated consumer entrypoint together. Prove both web profiles route a fresh project to shared chrome without changing core consumers.
+- For VINASIG project publication or public metadata changes, maintain CORE-009, `templates/project-publication.md`, the workflow skill and the generated entrypoint for every profile together. Route organization profile changes to `VINASIG/.github/profile/README.md` and its existing translation. Keep project facts consistent with the website inventory and repository details within authorized scope.

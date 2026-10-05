@@ -76,6 +76,15 @@
       "exceptions": "No waiver of platform/sandbox. Task-scoped approval persists. Missing checks are NOT_RUN."
     },
     {
+      "id": "CORE-009",
+      "scope": "core",
+      "level": "MUST",
+      "summary": "Synchronize public VINASIG project information",
+      "verification": ["agent"],
+      "evidence": "Affected public README, repository metadata, website inventory, organization profile translations and exact publication evidence",
+      "exceptions": "Applies only to VINASIG-owned public project information. Preserve current authorization and unrelated changes. Prepare exact edits and report inaccessible or unauthorized destinations as pending."
+    },
+    {
       "id": "LANG-001",
       "scope": "core",
       "level": "MUST",

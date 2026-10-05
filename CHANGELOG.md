@@ -1,5 +1,12 @@
 # Changelog
 
+## Public organization profile synchronization - 2026-10-05
+
+- Add CORE-009 at the owner's request to keep the organization profile current when tools or their public information change. Review affected repository details, the VINASIG website inventory and both existing profile languages together.
+- Add the project publication checklist to all profiles and route it through the generated AGENTS entrypoint and workflow skill. Specify the public `.github/profile/README.md` organization convention and the linked Vietnamese translation.
+- Preserve task authorization, verified public facts, separate brand rights and unrelated content. Report inaccessible destinations as pending. The installer remains offline and does not publish or edit another repository automatically.
+- Adopt this mandatory preview clarification through a reviewed bundle update. Preserve prior snapshots and installer backups for rollback. The policy review and scoped adoption record are in [the dated audit](docs/audits/ORGANIZATION_PROFILE_2026-10-05.md).
+
 ## Shared website header and footer - 2026-10-05
 
 - Add WEB-009 after the owner reported inconsistent chrome across nine published websites. Reuse the approved identity row and localized footer in new projects as well as existing layouts.
