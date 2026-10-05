@@ -50,7 +50,8 @@ Read [the initial local validation](docs/audits/INITIAL_VALIDATION.md) and [publ
 2. Build a bundle from a reviewed source checkout. Record the printed SHA-256 through a trusted review process.
 3. Review an `init --dry-run` plan for the explicit target, then apply that same source and profile.
 4. Start a fresh Codex session in the consumer repository. Check actual instruction and skill discovery.
-5. Adopt the appropriate quality configuration in a separate reviewed change. The installer does not edit `package.json`, existing lint configurations or MCP settings.
+5. For a new VINASIG website, follow WEB-009 and the installed `templates/web/site-chrome.md` before creating its layout. Reuse the reviewed shared header/footer and add real route/locale/theme regressions.
+6. Adopt the appropriate quality configuration in a separate reviewed change. The installer does not edit `package.json`, existing lint configurations or MCP settings.
 
 ```sh
 node dist/bundle.js output/bundles/reviewed-0.1.0
@@ -96,7 +97,7 @@ The owner selected GPL-3.0-or-later for this offline installer and verification 
 agent-standards/
   AGENTS.md                 Maintainer instructions
   README.md                 Quick start and scope
-  standards.json            38 stable rules
+  standards.json            39 stable rules
   tools.lock.json           Verified tool versions and boundaries
   policies/                 Core and specialized policies
   profiles/                 Core, static web and typed web

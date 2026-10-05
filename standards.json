@@ -344,6 +344,15 @@
       "verification": ["automatic", "agent", "human"],
       "evidence": "License review, ownership and dependency inventory, scope map, text/asset digests, metadata and publication checks",
       "exceptions": "Current task authorization persists. Never invent third-party rights. Record purpose-based license exceptions and unresolved human review."
+    },
+    {
+      "id": "WEB-009",
+      "scope": "web",
+      "level": "MUST",
+      "summary": "Shared VINASIG website header and footer for new and existing layouts",
+      "verification": ["automatic", "agent", "human"],
+      "evidence": "Reviewed source revision/digest, every layout route and locale/theme, header/footer screenshots, geometry/link/keyboard/no-JavaScript/enlarged-text regressions and deployed revision",
+      "exceptions": "Product navigation and focused content width remain independent. A shared-chrome exception needs an owner-approved reason and review date."
     }
   ]
 }

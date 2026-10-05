@@ -6,6 +6,7 @@ import { randomUUID } from 'node:crypto';
 import { createBundle, repositoryRoot } from '../src/bundle.ts';
 import {
   doctor,
+  entrypoint,
   execute,
   installed,
   planInstall,
@@ -15,6 +16,17 @@ import {
 import { readOptional, sha256 } from '../src/model.ts';
 import { begin, end } from '../src/model.ts';
 import type { Profile } from '../src/model.ts';
+
+await test('new web projects receive the shared header/footer procedure', () => {
+  for (const profile of ['web-static', 'web-typescript'] as const) {
+    const block = entrypoint(profile, '0.1.0');
+    assert.match(block, /WEB-009/);
+    assert.match(block, /templates\/web\/site-chrome\.md/);
+    assert.match(block, /inspectSiteChrome/);
+    assert(Buffer.byteLength(block) < 8192);
+  }
+  assert.doesNotMatch(entrypoint('core', '0.1.0'), /WEB-009|inspectSiteChrome/);
+});
 
 async function workspace(): Promise<string> {
   const root = path.join(repositoryRoot, 'output/tests', randomUUID());
@@ -72,6 +84,21 @@ for (const p of ['core', 'web-static', 'web-typescript'] satisfies Profile[]) {
     );
     const snapshot = await installed(target);
     assert.ok(snapshot);
+    if (p !== 'core') {
+      for (const file of [
+        'templates/web/site-chrome.md',
+        'templates/web/site-chrome.mjs',
+      ]) {
+        assert.deepEqual(
+          await readFile(path.join(target, '.vinasig/standards', file)),
+          await readFile(path.join(repositoryRoot, file)),
+        );
+      }
+      assert.match(
+        await readFile(path.join(target, 'AGENTS.md'), 'utf8'),
+        /WEB-009/,
+      );
+    }
     for (const file of [
       'LICENSE',
       'LICENSES.md',

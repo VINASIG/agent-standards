@@ -96,3 +96,7 @@ For ordinary custom selects, mark selected-value spans with `data-control-value`
 The import does not auto-register CI, install a browser, create secrets, add analytics, connect account dashboards or send data to an external scanner. These steps need a relevant task and appropriate authorization.
 
 WEB-008 also requires `inspectControlSurfaces` on initial and opened real controls. Import it from the same local interface template. Inventory controls before testing, including hidden states, and assert their expected count. The helper rejects unstyled native checkbox/radio/search/progress surfaces, missing range/progress subparts, platform scrollbars, disclosure markers and offscreen or transparent expanded popups. Use the design-system control-surfaces stylesheet, preserve keyboard/form/scroll behavior, review screenshots and recheck the published website. No helper alone approves a visual result.
+
+## Start a website with common chrome
+
+Both web profiles include WEB-009, `templates/web/site-chrome.md` and the `inspectSiteChrome` helper. The generated AGENTS entrypoint routes new-project work to this checklist. The installer deliberately does not inject layout components or add dependencies. Adopt the reviewed design-system header/footer source in project-owned files, pin its revision/digest, and test every layout route before publishing. Existing consumers use a reviewed bundle update, never manual snapshot edits.

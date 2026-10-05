@@ -12,3 +12,5 @@ This guide governs development of this repository. The consumer entrypoint is ge
 - Deliberately broken fixtures prove that gates reject defects. Fix a gate's bug without weakening its intended assertion. Rule, exception and baseline changes need a separate review rationale and changelog entry.
 - Store local research, bundles, traces and screenshots in ignored `output/`. Durable audit summaries belong in `docs/audits/`.
 - Keep the published standard independent of private asset archives, account tokens and personal machine paths.
+
+- For new VINASIG website guidance or header/footer changes, maintain WEB-009, the project-start checklist and the generated consumer entrypoint together. Prove both web profiles route a fresh project to shared chrome without changing core consumers.

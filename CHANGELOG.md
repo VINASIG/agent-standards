@@ -1,5 +1,12 @@
 # Changelog
 
+## Shared website header and footer - 2026-10-05
+
+- Add WEB-009 after the owner reported inconsistent chrome across nine published websites. Reuse the approved identity row and localized footer in new projects as well as existing layouts.
+- Route the project-start checklist through web profiles, workflow/responsive skills and the generated AGENTS entrypoint. Keep product navigation and focused content widths independent.
+- Add a rendered geometry/destination inspector and positive/negative browser fixtures. Check both locales/themes, keyboard, no-JavaScript and enlarged text in consumer regressions, then open screenshots and inspect the deployed revision.
+- Existing managed snapshots require a reviewed installer update. Project-owned adoption records can point to the new contract without changing pinned snapshot bytes. Rollback uses preserved bundles and the installer backup. No new UI dependency or brand redistribution is introduced.
+
 ## Complete control surface enforcement - 2026-10-04
 
 - Address the owner's recurring picker and popup reports. WEB-008 already prohibited platform popups, but inventory and automation omitted internal scrollbars and other native subparts.
