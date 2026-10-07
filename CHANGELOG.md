@@ -1,5 +1,12 @@
 # Changelog
 
+## Shared ecosystem preferences - 2026-10-07
+
+- Add WEB-011 following the owner's request for system defaults and synchronized theme/language on every VINASIG website.
+- Specify two finite Secure parent-domain cookies, local fallback, migration of earlier theme preferences and preservation of active work during a language change from another tab.
+- Route both web profiles and generated entrypoints to the same contract. Core-only projects keep their existing scope. Add a reusable actual-artifact browser conformance helper.
+- Preserve independent static locale pages, native no-script language links, approved header/footer icons and local-only processing of secrets/files. See [the rationale](docs/audits/shared-preferences-2026-10-07.md).
+
 ## Interface completion and recurring defects - 2026-10-07
 
 - Add WEB-010 and one shared interface acceptance contract following recurring published UI defects. Both web profiles, skills and generated AGENTS route to the same canonical checklist.

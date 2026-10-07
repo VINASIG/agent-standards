@@ -22,6 +22,8 @@ await test('new web projects receive the shared header/footer procedure', () => 
     const block = entrypoint(profile, '0.1.0');
     assert.match(block, /WEB-009/);
     assert.match(block, /WEB-010/);
+    assert.match(block, /WEB-011/);
+    assert.match(block, /templates\/web\/shared-preferences\.md/);
     assert.match(block, /templates\/web\/ui-contract\.md/);
     assert.match(block, /templates\/web\/site-chrome\.md/);
     assert.match(block, /inspectSiteChrome/);
@@ -29,7 +31,7 @@ await test('new web projects receive the shared header/footer procedure', () => 
   }
   assert.doesNotMatch(
     entrypoint('core', '0.1.0'),
-    /WEB-009|WEB-010|inspectSiteChrome|inspectUiContract/,
+    /WEB-009|WEB-010|WEB-011|shared-preferences|inspectSiteChrome|inspectUiContract/,
   );
 });
 
