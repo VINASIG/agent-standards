@@ -1,5 +1,12 @@
 # Changelog
 
+## Interface completion and recurring defects - 2026-10-07
+
+- Add WEB-010 and one shared interface acceptance contract following recurring published UI defects. Both web profiles, skills and generated AGENTS route to the same canonical checklist.
+- Require defect-to-regression/image mapping across modes and difficult states. Explicitly cover duplicated radio markers, touching cards, floating icons, distant/wrong field errors, mismatched bounds, inline alignment, fixed output sizing, detached result actions, inconsistent timer controls, invisible depleted tracks, collapsed essential settings and ambiguous localized messages.
+- Clarify legitimate native selection-card semantics and exact Sun/Moon target-state behavior. Preserve original artwork and shared source digests.
+- Add structural UI diagnostics and positive/negative three-engine fixtures. These do not replace product behavior tests or opened-image review. See the [dated rationale and validation scope](docs/audits/UI_ACCEPTANCE_2026-10-07.md).
+
 ## Repo details at project creation - 2026-10-06
 
 - Clarify CORE-009 following the owner's explicit requirement that agents configure GitHub Repo details for every newly created project, including private and source-only repositories.

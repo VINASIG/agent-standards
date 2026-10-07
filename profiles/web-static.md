@@ -1,5 +1,7 @@
 # Static web profile
 
+WEB-010 and `templates/web/ui-contract.md` are the common visible-change completion gate. Declare the product state matrix, map each reported defect to its regression and opened image, and repeat affected deployed states. A build and a default-mode screenshot cannot approve untested modes or interactions.
+
 Extends [core](core.md). Use for HTML/CSS/JS and static generators such as Astro. Keep the existing stack and package manager. Avoid adding runtime JavaScript or a framework for presentational changes.
 
 Read web policy for UI, plus motion, search, performance or agent-readiness policy when the task concerns that subject. Adopt local font/assets through the project's own base-path-aware build and record source versions. Use strict JS/JSDoc, Stylelint and generated HTML checks where compatible. A generator's official checker still applies.

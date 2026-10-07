@@ -21,11 +21,16 @@ await test('new web projects receive the shared header/footer procedure', () => 
   for (const profile of ['web-static', 'web-typescript'] as const) {
     const block = entrypoint(profile, '0.1.0');
     assert.match(block, /WEB-009/);
+    assert.match(block, /WEB-010/);
+    assert.match(block, /templates\/web\/ui-contract\.md/);
     assert.match(block, /templates\/web\/site-chrome\.md/);
     assert.match(block, /inspectSiteChrome/);
     assert(Buffer.byteLength(block) < 8192);
   }
-  assert.doesNotMatch(entrypoint('core', '0.1.0'), /WEB-009|inspectSiteChrome/);
+  assert.doesNotMatch(
+    entrypoint('core', '0.1.0'),
+    /WEB-009|WEB-010|inspectSiteChrome|inspectUiContract/,
+  );
 });
 
 await test('every profile routes new repositories to verified Repo details', () => {
@@ -105,6 +110,8 @@ for (const p of ['core', 'web-static', 'web-typescript'] satisfies Profile[]) {
       for (const file of [
         'templates/web/site-chrome.md',
         'templates/web/site-chrome.mjs',
+        'templates/web/ui-contract.md',
+        'templates/web/ui-contract.mjs',
       ]) {
         assert.deepEqual(
           await readFile(path.join(target, '.vinasig/standards', file)),

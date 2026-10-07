@@ -105,6 +105,8 @@ This instruction requires a scoped review and truthful synchronization under cur
 
 ## Start a website with common chrome
 
+Every visible change also applies WEB-010 and `templates/web/ui-contract.md`. Both web profiles install the same checklist and `inspectUiContract` helper, while core installs neither. Declare applicable choices, icons, local field errors, output/actions, aligned rows and progress surfaces. Preserve nonzero expected inventories and add independent product behavior tests for bounds, content sizing, timer transitions and copy/clear. Review images for every changed major mode and difficult state, then verify the exact affected deployed states. Existing consumers adopt this route through the reviewed installer update, not manual managed-file edits. Project guidance supplies product facts, rather than a second copy of the canonical standard.
+
 Both web profiles include WEB-009, `templates/web/site-chrome.md` and the `inspectSiteChrome` helper. The generated AGENTS entrypoint routes new-project work to this checklist. The installer deliberately does not inject layout components or add dependencies. Adopt the reviewed design-system header/footer source in project-owned files, pin its revision/digest, and test every layout route before publishing. Existing consumers use a reviewed bundle update, never manual snapshot edits.
 
 ## Finish a public website with domain and discovery recommendations

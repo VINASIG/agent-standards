@@ -8,7 +8,12 @@ process.env['VINASIG_RESPONSIVE_RUN'] = run;
 const output = path.join(repositoryRoot, 'output/responsive', run);
 export default defineConfig({
   testDir: '.',
-  testMatch: ['web.spec.ts', 'interface.spec.ts', 'site-chrome.spec.ts'],
+  testMatch: [
+    'web.spec.ts',
+    'interface.spec.ts',
+    'site-chrome.spec.ts',
+    'ui-contract.spec.ts',
+  ],
   globalSetup: './preview.ts',
   fullyParallel: true,
   workers: 3,

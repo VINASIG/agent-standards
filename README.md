@@ -17,6 +17,8 @@ Version 0.1.0 is a public preview maintained at [VINASIG/agent-standards](https:
 
 [standards.json](standards.json) records stable rule IDs, scope, strength, verification, evidence and exception conditions. A policy is not automatically enforceable merely because it is written as MUST. Human visual review and field measurements remain explicit requirements where applicable.
 
+For every new or changed interface, WEB-010 routes both web profiles to the same [interface acceptance contract](templates/web/ui-contract.md). It catalogues recurring layout/state defects and requires each reported symptom to be mapped to a regression, an opened image and affected live verification. The [UI inspector](templates/web/ui-contract.mjs) checks declared structural invariants. It does not turn a test count or saved screenshot into visual approval.
+
 ## Quick start
 
 Use Node 24.21.0 and npm 11.19.0, or review a compatible version update first. Browser binaries are needed only for this repository's web verification, not for a core consumer.
@@ -99,7 +101,7 @@ The owner selected GPL-3.0-or-later for this offline installer and verification 
 agent-standards/
   AGENTS.md                 Maintainer instructions
   README.md                 Quick start and scope
-  standards.json            41 stable rules
+  standards.json            42 stable rules
   tools.lock.json           Verified tool versions and boundaries
   policies/                 Core and specialized policies
   profiles/                 Core, static web and typed web
