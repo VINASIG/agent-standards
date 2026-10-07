@@ -6,6 +6,7 @@
 - Specify two finite Secure parent-domain cookies, local fallback, migration of earlier theme preferences and preservation of active work during a language change from another tab.
 - Route both web profiles and generated entrypoints to the same contract. Core-only projects keep their existing scope. Add a reusable actual-artifact browser conformance helper.
 - Preserve independent static locale pages, native no-script language links, approved header/footer icons and local-only processing of secrets/files. See [the rationale](docs/audits/shared-preferences-2026-10-07.md).
+- Harden actual-artifact fixture transport: retain security headers, address the local preview with its own Host, verify native media configuration after a COOP browsing-context change and activate visible synchronization targets. Keep application and cookie assertions unchanged; document platform measurement limits.
 
 ## Interface completion and recurring defects - 2026-10-07
 
