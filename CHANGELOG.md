@@ -1,5 +1,11 @@
 # Changelog
 
+## Shared QR image intake - 2026-10-08
+
+- Extend the WEB-010 acceptance documentation after the owner identified inconsistent QR image acquisition in QR Scanner and TOTP Generator.
+- Route the same acquisition task to one shared component, stylesheet and immutable source record. Require adjacent file, explicit clipboard and camera actions, native paste, field-local failures, cancellation and responsive comparison across both consumers.
+- This adds documentation and local consumer routing. It does not change the offline installer, generated entrypoint or installed runtime snapshots. See [the rationale and delivery evidence](docs/audits/qr-intake-2026-10-08.md).
+
 ## Destructive action semantics - 2026-10-08
 
 - Extend WEB-010 at the owner's request after session-clear and unsaved-edit actions inherited ordinary blue styling.

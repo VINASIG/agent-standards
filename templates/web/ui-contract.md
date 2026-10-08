@@ -41,3 +41,7 @@ Run the existing interface, control and chrome helpers with explicit nonzero inv
 Capture AND open screenshots for every changed major mode and difficult state at useful scale, including 320 px, representative desktop, actual breakpoint neighbors and 200 percent text. Preserve synthetic data for secret-bearing tools. Record which images were opened and the observations. Merely saving images or accepting generated baselines is not visual review. Run the declared Chromium/Firefox/WebKit matrix. Keep real-device, assistive-technology, human review and automated evidence distinct.
 
 Before publishing, map every reported defect to its regression, reviewed image and remaining limitation. After deployment, verify the actual revision, repeat the affected live interactions and open live header, workspace and footer images. Do not announce completion from a test count, build success, no-overflow assertion or deployment submission alone. An unresolved reported defect remains FAIL or NOT_RUN with its concrete reason.
+
+## Shared QR image acquisition
+
+For QR image paste, upload or camera acquisition follow [the shared intake contract](qr-image-intake.md). Reuse the reviewed VINASIG component and stylesheet instead of recreating the same controls in each tool. Preserve product validation and privacy boundaries. Compare the actual consumers, native paste, phone keyboard delivery, clipboard permission fallback, camera cancellation, both locales/themes and script-unavailable states.
