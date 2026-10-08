@@ -91,6 +91,8 @@ export function inspectDestructiveActions(inventory) {
       const style = getComputedStyle(node);
       if (!forced) {
         const reference = document.createElement('span');
+        reference.style.setProperty('transition', 'none', 'important');
+        reference.style.setProperty('animation', 'none', 'important');
         node.append(reference);
         const red = [
           '--color-error',

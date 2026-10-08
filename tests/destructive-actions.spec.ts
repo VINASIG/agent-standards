@@ -63,6 +63,24 @@ test('filled confirmations reject blue backgrounds', async ({ page }) => {
   ).toContain('destructive-color');
 });
 
+test('reference colors remain exact when the host animates inherited colors', async ({
+  page,
+}) => {
+  await page.setContent(
+    `<style>:root{--color-error:#7b1105;--color-error-accent:#971607;--color-auditor-red-strong:#7b1105;--color-white:#fff;--color-surface:#fcfcfc;--color-error-background:#f8eae8}body{background:var(--color-surface)}button{padding:12px;font:16px sans-serif}button span{transition:color 1s!important}${css}</style><button id="clear" type="button" data-destructive-action="filled">Delete draft</button>`,
+  );
+  expect(await page.evaluate(inspectDestructiveActions, inventory)).toEqual([]);
+  await page.addStyleTag({
+    content:
+      '#clear{background:#21497b!important;border-color:#21497b!important}',
+  });
+  expect(
+    (await page.evaluate(inspectDestructiveActions, inventory)).map(
+      (item) => item.kind,
+    ),
+  ).toContain('destructive-color');
+});
+
 for (const [defect, kind] of [
   ['color:#21497b;border-color:#21497b', 'destructive-color'],
   ['color:#f8eae8;border-color:#f8eae8', 'destructive-text-contrast'],
