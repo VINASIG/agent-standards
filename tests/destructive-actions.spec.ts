@@ -67,7 +67,7 @@ test('reference colors remain exact when the host animates inherited colors', as
   page,
 }) => {
   await page.setContent(
-    `<style>:root{--color-error:#7b1105;--color-error-accent:#971607;--color-auditor-red-strong:#7b1105;--color-white:#fff;--color-surface:#fcfcfc;--color-error-background:#f8eae8}body{background:var(--color-surface)}button{padding:12px;font:16px sans-serif}button span{transition:color 1s!important}${css}</style><button id="clear" type="button" data-destructive-action="filled">Delete draft</button>`,
+    `<style>:root{--color-error:#7b1105;--color-error-accent:#971607;--color-auditor-red-strong:#7b1105;--color-white:#fff;--color-surface:#fcfcfc;--color-error-background:#f8eae8}body{background:var(--color-surface)}button{padding:12px;font:16px sans-serif}button span{color:#7b1105!important;transition:color 1s!important}${css}</style><button id="clear" type="button" data-destructive-action="filled">Delete draft</button>`,
   );
   expect(await page.evaluate(inspectDestructiveActions, inventory)).toEqual([]);
   await page.addStyleTag({

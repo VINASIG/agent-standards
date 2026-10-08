@@ -101,10 +101,10 @@ export function inspectDestructiveActions(inventory) {
         ]
           .filter((token) => style.getPropertyValue(token).trim())
           .map((token) => {
-            reference.style.color = `var(${token})`;
+            reference.style.setProperty('color', `var(${token})`, 'important');
             return getComputedStyle(reference).color;
           });
-        reference.style.color = 'var(--color-white)';
+        reference.style.setProperty('color', 'var(--color-white)', 'important');
         const white = getComputedStyle(reference).color;
         reference.remove();
         const filled =
