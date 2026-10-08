@@ -27,11 +27,13 @@ await test('new web projects receive the shared header/footer procedure', () => 
     assert.match(block, /templates\/web\/ui-contract\.md/);
     assert.match(block, /templates\/web\/site-chrome\.md/);
     assert.match(block, /inspectSiteChrome/);
+    assert.match(block, /inspectDestructiveActions/);
+    assert.match(block, /data-destructive-action/);
     assert(Buffer.byteLength(block) < 8192);
   }
   assert.doesNotMatch(
     entrypoint('core', '0.1.0'),
-    /WEB-009|WEB-010|WEB-011|shared-preferences|inspectSiteChrome|inspectUiContract/,
+    /WEB-009|WEB-010|WEB-011|shared-preferences|inspectSiteChrome|inspectUiContract|inspectDestructiveActions|data-destructive-action/,
   );
 });
 
@@ -114,6 +116,7 @@ for (const p of ['core', 'web-static', 'web-typescript'] satisfies Profile[]) {
         'templates/web/site-chrome.mjs',
         'templates/web/ui-contract.md',
         'templates/web/ui-contract.mjs',
+        'templates/web/destructive-actions.mjs',
       ]) {
         assert.deepEqual(
           await readFile(path.join(target, '.vinasig/standards', file)),

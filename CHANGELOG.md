@@ -1,5 +1,12 @@
 # Changelog
 
+## Destructive action semantics - 2026-10-08
+
+- Extend WEB-010 at the owner's request after session-clear and unsaved-edit actions inherited ordinary blue styling.
+- Require explicit action classification, semantic red, localized verbs/icons, enabled-state contrast, keyboard/forced-colors coverage and actual discard outcomes. Preserve ordinary filter clearing, cancellation and copy-producing operations.
+- Add the reusable destructive-action inspector and positive/negative browser fixtures. Route both web profiles, generated instructions and workflow/responsive skills through the same contract. Core-only scope stays unchanged.
+- Existing consumers adopt a reviewed offline snapshot update with integrity verification and preserved rollback records. See the dated action audit for source and deployment evidence.
+
 ## Shared ecosystem preferences - 2026-10-07
 
 - Add WEB-011 following the owner's request for system defaults and synchronized theme/language on every VINASIG website.

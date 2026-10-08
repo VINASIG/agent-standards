@@ -13,6 +13,7 @@ export default defineConfig({
     'interface.spec.ts',
     'site-chrome.spec.ts',
     'ui-contract.spec.ts',
+    'destructive-actions.spec.ts',
   ],
   globalSetup: './preview.ts',
   fullyParallel: true,
