@@ -54,13 +54,13 @@
 
 @media (forced-colors: active) {
   [data-destructive-action] {
-    color: ButtonText;
-    background: ButtonFace;
-    border-color: ButtonText;
+    color: CanvasText;
+    background: Canvas;
+    border-color: CanvasText;
   }
 
   [data-destructive-action]:focus-visible {
-    outline-color: Highlight;
+    outline-color: CanvasText;
   }
 
   [data-destructive-action]:disabled,
@@ -72,8 +72,8 @@
 
   [data-destructive-action]:not(:disabled, [aria-disabled='true']):hover,
   [data-destructive-action]:not(:disabled, [aria-disabled='true']):active {
-    color: HighlightText;
-    background: Highlight;
-    border-color: Highlight;
+    color: Canvas;
+    background: CanvasText;
+    border-color: CanvasText;
   }
 }

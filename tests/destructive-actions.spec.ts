@@ -8,12 +8,13 @@ const css = await readFile(
 );
 const inventory = [{ selector: '#clear', count: 1 }];
 
-for (const theme of ['light', 'dark']) {
+for (const theme of ['light', 'dark'] as const) {
   test(`destructive action remains red and usable in ${theme}`, async ({
     page,
   }) => {
+    await page.emulateMedia({ colorScheme: theme });
     await page.setContent(
-      `<style>:root{--color-error:${theme === 'light' ? '#7b1105' : '#efc2bb'};--color-surface:${theme === 'light' ? '#fcfcfc' : '#191919'};--color-error-background:${theme === 'light' ? '#f8eae8' : '#3f2926'}}body{background:var(--color-surface)}button{padding:12px;font:16px sans-serif}${css}</style><button id="clear" type="button" data-destructive-action>Clear session</button>`,
+      `<style>:root{color-scheme:${theme};--color-error:${theme === 'light' ? '#7b1105' : '#efc2bb'};--color-surface:${theme === 'light' ? '#fcfcfc' : '#191919'};--color-error-background:${theme === 'light' ? '#f8eae8' : '#3f2926'}}body{background:var(--color-surface)}button{padding:12px;font:16px sans-serif}${css}</style><button id="clear" type="button" data-destructive-action>Clear session</button>`,
     );
     for (const state of ['default', 'hover', 'active', 'focus']) {
       if (state === 'hover') await page.locator('#clear').hover();
@@ -41,6 +42,16 @@ for (const theme of ['light', 'dark']) {
     expect(await page.evaluate(inspectDestructiveActions, inventory)).toEqual(
       [],
     );
+    await page.locator('#clear').hover();
+    expect(await page.evaluate(inspectDestructiveActions, inventory)).toEqual(
+      [],
+    );
+    await page.mouse.down();
+    expect(await page.evaluate(inspectDestructiveActions, inventory)).toEqual(
+      [],
+    );
+    await page.mouse.move(0, 0);
+    await page.mouse.up();
   });
 }
 
