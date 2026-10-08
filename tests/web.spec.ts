@@ -78,11 +78,13 @@ for (const viewport of sizes) {
     await captureFullPage(page, info, 'text-200');
     await assertNoPageOverflow(page);
     await page.emulateMedia({ reducedMotion: 'reduce' });
-    expect(
-      await page
-        .getByRole('button', { name: 'Menu', exact: true })
-        .evaluate((node) => getComputedStyle(node).transitionDuration),
-    ).toBe('0s');
+    await expect
+      .poll(() =>
+        page
+          .getByRole('button', { name: 'Menu', exact: true })
+          .evaluate((node) => getComputedStyle(node).transitionDuration),
+      )
+      .toBe('0s');
     await expect(page.getByRole('contentinfo')).toBeVisible();
     expect(errors).toEqual([]);
   });

@@ -1,7 +1,24 @@
 :root {
   font-family: sans-serif;
-  color: #292526;
-  background: #f7f6f4;
+  color-scheme: light;
+  --canvas: #f9f9f9;
+  --surface: #fcfcfc;
+  --text: #202020;
+  --boundary: #838383;
+  --focus: #21497b;
+  color: var(--text);
+  background: var(--canvas);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --canvas: #111;
+    --surface: #191919;
+    --text: #eee;
+    --boundary: #7b7b7b;
+    --focus: #8bb3ff;
+  }
 }
 
 * {
@@ -47,7 +64,7 @@ p {
 }
 
 article {
-  border: 1px solid #70696a;
+  border: 1px solid var(--boundary);
   padding: 1rem;
 }
 
@@ -72,6 +89,9 @@ button {
 input {
   min-width: 0;
   width: 100%;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--boundary);
 }
 
 button {
@@ -82,7 +102,7 @@ button {
 }
 
 :focus-visible {
-  outline: 3px solid #21497b;
+  outline: 3px solid var(--focus);
   outline-offset: 3px;
 }
 
