@@ -10,6 +10,8 @@ WebKit forced-colors testing exposed a system ButtonText border with insufficien
 
 Positive/negative browser fixtures cover light/dark, hover, focus, disabled, forced colors, ordinary-blue drift, low contrast, opacity and missing/unlisted actions. Product consumers additionally exercise actual synthetic clear/discard flows in both languages. A shared CSS fixture retains the reviewed design-system source rather than weakening a consumer rule. Existing confirmation/authorization requirements remain separate. This change adds no unnecessary confirmation dialog to a local clear.
 
+Color reference probes use resolved custom properties from the action's own scope in an invisible, absolutely positioned element outside the action. This keeps the measurement independent of host transitions, important child styles and flex layout. A regression verifies that inspecting a hovered flex button preserves its size, pointer state and scoped semantic palette in all supported engines.
+
 Sources reviewed on 8 October 2026 include [W3C use of color](https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html) and [GOV.UK warning buttons](https://design-system.service.gov.uk/components/button/#warning-buttons). They support redundant labels and selective destructive styling. VINASIG's additional session-clear red requirement comes directly from this owner's request, not a claimed universal WCAG red-color mandate.
 
 The ecosystem rollout record in web-design-system documents the exact consumer scope, source pins, checks and live observations. Physical devices, screen readers and independent human evaluation are separate from automated and agent visual evidence.

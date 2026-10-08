@@ -93,7 +93,10 @@ export function inspectDestructiveActions(inventory) {
         const reference = document.createElement('span');
         reference.style.setProperty('transition', 'none', 'important');
         reference.style.setProperty('animation', 'none', 'important');
-        node.append(reference);
+        reference.style.setProperty('position', 'absolute', 'important');
+        reference.style.setProperty('visibility', 'hidden', 'important');
+        reference.style.setProperty('pointer-events', 'none', 'important');
+        document.body.append(reference);
         const red = [
           '--color-error',
           '--color-error-accent',
@@ -101,10 +104,18 @@ export function inspectDestructiveActions(inventory) {
         ]
           .filter((token) => style.getPropertyValue(token).trim())
           .map((token) => {
-            reference.style.setProperty('color', `var(${token})`, 'important');
+            reference.style.setProperty(
+              'color',
+              style.getPropertyValue(token),
+              'important',
+            );
             return getComputedStyle(reference).color;
           });
-        reference.style.setProperty('color', 'var(--color-white)', 'important');
+        reference.style.setProperty(
+          'color',
+          style.getPropertyValue('--color-white') || '#fff',
+          'important',
+        );
         const white = getComputedStyle(reference).color;
         reference.remove();
         const filled =

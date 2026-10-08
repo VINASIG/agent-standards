@@ -81,6 +81,26 @@ test('reference colors remain exact when the host animates inherited colors', as
   ).toContain('destructive-color');
 });
 
+test('color probes preserve flex hover geometry and scoped semantic roles', async ({
+  page,
+}) => {
+  await page.setContent(
+    `<!doctype html><style>:root{--color-error:#7b1105;--color-surface:#fcfcfc;--color-error-background:#f8eae8}.region{--color-error:#efc2bb;--color-surface:#191919;--color-error-background:#3f2926;background:#191919;padding:20px}button{display:flex;gap:20px;padding:12px;font:16px sans-serif}${css}</style><div class="region"><button id="clear" type="button" data-destructive-action>Clear session</button></div>`,
+  );
+  await page.locator('#clear').hover();
+  const geometry = await page.locator('#clear').boundingBox();
+  await page.mouse.move(0, 0);
+  await page.locator('#clear').hover();
+  expect(
+    await page.locator('#clear').evaluate((node) => node.matches(':hover')),
+  ).toBe(true);
+  expect(await page.evaluate(inspectDestructiveActions, inventory)).toEqual([]);
+  expect(await page.locator('#clear').boundingBox()).toEqual(geometry);
+  expect(
+    await page.locator('#clear').evaluate((node) => node.matches(':hover')),
+  ).toBe(true);
+});
+
 for (const [defect, kind] of [
   ['color:#21497b;border-color:#21497b', 'destructive-color'],
   ['color:#f8eae8;border-color:#f8eae8', 'destructive-text-contrast'],
