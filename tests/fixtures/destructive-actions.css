@@ -4,13 +4,6 @@
   border: 1px solid var(--color-error);
 }
 
-[data-destructive-action]:not(:disabled, [aria-disabled='true']):hover,
-[data-destructive-action]:not(:disabled, [aria-disabled='true']):active {
-  color: var(--color-error);
-  background: var(--color-error-background);
-  border-color: var(--color-error);
-}
-
 [data-destructive-action]:focus-visible {
   outline: 3px solid var(--color-error);
   outline-offset: 3px;
@@ -29,10 +22,24 @@
   color: inherit;
 }
 
+[data-destructive-action]:not(:disabled, [aria-disabled='true']):hover,
+[data-destructive-action]:not(:disabled, [aria-disabled='true']):active {
+  color: var(--color-error);
+  background: var(--color-error-background);
+  border-color: var(--color-error);
+}
+
 [data-destructive-action='filled'] {
   color: var(--color-white);
   background: var(--color-error-accent);
-  border-color: var(--color-error-accent);
+  border-color: var(--color-error);
+}
+
+[data-destructive-action='filled']:disabled,
+[data-destructive-action='filled'][aria-disabled='true'] {
+  color: var(--color-white);
+  background: var(--color-error-accent);
+  border-color: var(--color-error);
 }
 
 [data-destructive-action='filled']:not(:disabled, [aria-disabled='true']):hover,
@@ -42,14 +49,7 @@
   ):active {
   color: var(--color-white);
   background: var(--color-auditor-red-strong);
-  border-color: var(--color-auditor-red-strong);
-}
-
-[data-destructive-action='filled']:disabled,
-[data-destructive-action='filled'][aria-disabled='true'] {
-  color: var(--color-white);
-  background: var(--color-error-accent);
-  border-color: var(--color-error-accent);
+  border-color: var(--color-error);
 }
 
 @media (forced-colors: active) {
@@ -57,13 +57,6 @@
     color: ButtonText;
     background: ButtonFace;
     border-color: ButtonText;
-  }
-
-  [data-destructive-action]:not(:disabled, [aria-disabled='true']):hover,
-  [data-destructive-action]:not(:disabled, [aria-disabled='true']):active {
-    color: HighlightText;
-    background: Highlight;
-    border-color: Highlight;
   }
 
   [data-destructive-action]:focus-visible {
@@ -75,5 +68,12 @@
     color: GrayText;
     border-color: GrayText;
     opacity: 1;
+  }
+
+  [data-destructive-action]:not(:disabled, [aria-disabled='true']):hover,
+  [data-destructive-action]:not(:disabled, [aria-disabled='true']):active {
+    color: HighlightText;
+    background: Highlight;
+    border-color: Highlight;
   }
 }
